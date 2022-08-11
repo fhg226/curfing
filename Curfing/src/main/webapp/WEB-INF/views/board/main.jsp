@@ -265,10 +265,10 @@ h2 {
 
    <div class="mainMenu">
       <ul>
-         <li><a href="/resources/popular.html">인기</a></li>
-         <li><a href="/resources/scope.html">별점</a></li>
-         <li><a href="/resources/rising.html">요즘뜨는</a></li>
-         <li><a href="/resources/atmosphere.html">분위기</a></li>
+        <li> <a href="popular">인기</a></li>
+        <li ><a href="scope">별점</a></li>
+        <li ><a href="rising">요즘뜨는</a></li>
+        <li ><a href="atmosphere">분위기</a></li>
       </ul>
    </div>
 

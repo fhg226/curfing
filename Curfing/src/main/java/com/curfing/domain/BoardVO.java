@@ -15,12 +15,16 @@ import lombok.Setter;
 @Data
 public class BoardVO {
 	
-	private long rno;
-	private long bno;
-	private String title;
-	private String content;
-	private String cafephoto;
-	private String writer;
-	private Date regdate;
-	private Date updatedate;
+	private int rno;
+	private int bno;
+	private String cafaname;
+	private String address;
+	private int phone;
+	private String reply;
+	private String price;
+	private String car;
+	private String opentime;
+	private String dayoff;
+	private String image;
+	private String cafeid;
 }

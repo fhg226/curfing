@@ -4,7 +4,7 @@
 <html lang="ko">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<link href="${path}/resources/css/basic.css" rel="stylesheet"/>    
+<link href="${path}/resources/css/basic.css" rel="stylesheet"/> 	
 <head>
   <meta charset="UTF-8">
 
@@ -451,7 +451,7 @@
 
     <!-- 로고 -->
     <div class="logo" mathod="get">
-      <a href="index.html">
+    <a href="main">
         Curfing
       </a>
     </div>
@@ -469,10 +469,10 @@
 
     <div class="mainMenu">
       <ul>
-        <li> <a href="/curfing/popular">인기</a></li>
-        <li ><a href="/curfing/scope">별점</a></li>
-        <li ><a href="/curfing/rising">요즘뜨는</a></li>
-        <li ><a href="/curfing/atmosphere">분위기</a></li>
+        <li> <a href="popular">인기</a></li>
+        <li ><a href="scope">별점</a></li>
+        <li ><a href="rising">요즘뜨는</a></li>
+        <li ><a href="atmosphere">분위기</a></li>
       </ul>
     </div>
   </div>
@@ -509,7 +509,7 @@
         <!-- 해당 레스토랑 목록 -->
         <section id="contents_list">
           <p class="hidden">목록</p>
-<c:forEach items="${List}" var="curfing">
+<c:forEach items="${atmosphereList}" var="curfing">
           <ul class="list-restaurants type-single-big top_list_restaurant_list">
             <li class="toplist_list">
               <div class="with-review">
@@ -538,7 +538,7 @@
                           <p class="wannago_txt">찜 </p>
                         </div>
                         <span class="title ">
-                            <c:out value="${curfing.rno}">s</c:out>
+                         	<c:out value="${curfing.rno}"></c:out>
                             <h3><c:out value="${curfing.cafaname}"/></h3>
                           
                         </span>
