@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.curfing.mapper.BoardMapper">
+
+	<select id="getList" resultType="com.curfing.domain.BoardVO">
+		<![CDATA[
+		select * from content where bno > 0
+		]]>
+	</select>
+
+	<insert id="insert">
+		insert into content(bno, name, address, phone, foodType, price, parking, salesTime, holiday, site, menu) values(c_seq.nextval, #{name}, #{address}, #{phone}, #{foodType}, #{price}, #{parking}, #{salesTime}, #{holiday}, #{site}, #{menu})
+	</insert>
+	
+	<delete id="delete">
+		delete content where bno = #{bno}
+	</delete>
+	
+	<update id="update">
+		update content set name=#{name}, address=#{address}, phone=#{phone}, foodType=#{foodType}, price=#{price}, parking=#{parking}, salesTime=#{salesTime}, holiday=#{holiday}, site=#{site}, menu=#{menu}, regDate=sysdate where bno=#{bno}
+	</update>
+	
+	<select id="read" resultType="com.curfing.domain.BoardVO">
+		select * from content where bno = #{bno}
+	</select>
+	
+</mapper>
