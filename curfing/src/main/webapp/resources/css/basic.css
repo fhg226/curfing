@@ -1,0 +1,24 @@
+@charset "UTF-8";
+*{
+  margin: 0px;
+  padding: 0px;
+}
+html, body{
+  font-size: 13px;
+  font-family: 돋음체, sans-serif, serif;
+}
+body{
+  width: 980px; /* % - 브라우저 크기 기준 */
+  margin: 0 auto;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+img{
+  border: none;
+}
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.curfing.mapper.CurfingMapper">
+
+	<select id="getList" resultType="com.curfing.domain.CurfingVO">
+	<![CDATA[
+	select * from cafe_r where bno > 0
+	]]>
+	</select>
+	
+
+<insert id="insert">
+ 	insert into cafe_r(rno,bno,cafaname,address,phone,reply,price,car,opentime,dayoff,image,cafeid)
+ 	values(#{rno},seq_board.nextval,#{cafaname},#{address},#{phone},#{reply},#{price},#{car},#{opentime},#{dayoff},#{image},#{cafeid})
+</insert>  
+
+
+<insert id="insertSelectKey">
+	<selectKey keyProperty="bno" order="BEFORE" resultType="Long">
+	 select seq_board.nextval from dual
+	</selectKey>
+	insert into cafe_r(rno,bno,cafaname,address,phone,reply,price,car,opentime,dayoff,image,cafeid)
+	values(#{rno},#{bno},#{cafaname},#{address},#{phone},#{reply},#{price},#{car},#{opentime},#{dayoff},#{image},#{cafeid})
+	
+</insert>  
+
+<select id="read" resultType="com.curfing.domain.CurfingVO">
+	select *from cafe_r where rno = #{rno}
+</select>
+
+
+</mapper>  
+  
