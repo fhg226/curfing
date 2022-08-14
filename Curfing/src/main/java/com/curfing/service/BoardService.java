@@ -7,9 +7,10 @@ import com.curfing.domain.Criteria;
 
 public interface BoardService {
 
-	public BoardVO get(Long bno);
 	
 	public List<BoardVO> getList(Criteria cri);
 	
-	public int getTotalCount(Criteria cri);
+	public List<BoardVO> getListPaging(Criteria cri);
+	
+	public int getTotal(Criteria cri);
 }

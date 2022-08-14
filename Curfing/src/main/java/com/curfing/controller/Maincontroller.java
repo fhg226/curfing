@@ -2,10 +2,12 @@ package com.curfing.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.curfing.domain.Criteria;
+import com.curfing.domain.PageMakerDTO;
 import com.curfing.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/board/*")
 public class Maincontroller {
 
 	private final BoardService service;
@@ -73,12 +76,20 @@ public class Maincontroller {
 	}
 	
 	//검색 결과 리스트
-	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public String list() {
-		log.info("list 입니다.");
-		return "/board/list";
+	@GetMapping("/list")
+	public void boardListGet(Model model, Criteria cri) {
+		
+		log.info("boardListGET");
+		
+		model.addAttribute("list", service.getListPaging(cri));
+		
+		int total = service.getTotal(cri);
+		
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		
+		model.addAttribute("pageMaker", pageMake);
+		
 	}
-	
 	
 	
 	

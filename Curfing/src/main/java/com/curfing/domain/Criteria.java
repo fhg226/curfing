@@ -15,16 +15,15 @@ public class Criteria {
 	//한 페이지 당 보여질 게시물 수
 	private int amount;
 	
+	//검색 키워드
+	private String keyword;
+
 	//검색 타입
 	private String type; 
 	
 	//검색 타입 배열
 	private String[] typeArr; 
-	
-	//검색 키워드
-	private String keyword;
-	
-	
+
 	public Criteria() {
 		this(1,10);
 	}
@@ -49,21 +48,7 @@ public class Criteria {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
-	public String[] getTypeArr() {
-		return type == null? new String[] {} : type.split(""); //split-하나씩 분리
-	}
-	
-	public String getListLink() {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
-				.queryParam("pageNum", this.pageNum)
-				.queryParam("amount", this.getAmount())
-				.queryParam("type", this.getType()) //get으로도 그냥 type으로도 가져와도 상관없다
-				.queryParam("keyword", this.keyword);
 		
-		return builder.toUriString();
-	}
-	
 	public String getKeyword() {
 		return keyword;
 	}
@@ -79,6 +64,14 @@ public class Criteria {
 	public void setType(String type) {
 		this.type = type;
 		this.typeArr = type.split("");
+	}
+	
+	public String[] getTypeArr() {
+		return typeArr;
+	}
+	
+	public void setTypeArr(String[] typeArr) {
+		this.typeArr = typeArr;
 	}
 	
 	@Override

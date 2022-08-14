@@ -46,18 +46,34 @@
       width: 500px;
       margin: 0 auto;
     }
-    input {
-      width: 80%;
-      border-radius: 20px;
-      border: 1px solid #bbb;
-      margin-bottom: 50px;
-      padding: 15px 17px;
-    }
-    .fa-search {
-      position: absolute;
-      right: 50px;
-      top: 15px;
-    }
+    /* 검색 */
+.search-container {
+   position: relative;
+   text-align: center;
+   width: 550px;
+   margin: 0 auto;
+}
+
+.selectbox {
+   width: 80px;
+   height: 45px;
+   border-radius: 20px;
+}
+
+input {
+   width: 70%;
+   border-radius: 20px;
+   border: 1px solid #bbb;
+   margin-bottom: 50px;
+   padding: 15px 17px;
+}
+
+.fa-search {
+   position: absolute;
+   right: 50px;
+   top: 15px;
+}
+
     /* 메인 메뉴 */
     .mainMenu {
       text-align: center;
@@ -353,25 +369,44 @@
       text-align: left;
       padding: 10px;
     }
+    
+     .pageInfo{
+      list-style : none;
+      display: inline-block;
+    margin: 50px 0 0 100px;      
+  }
+  .pageInfo li{
+      float: left;
+    font-size: 20px;
+    margin-left: 18px;
+    padding: 7px;
+    font-weight: 500;
+  }
+ .active{
+      background-color: #cdd5ec;
+  }   
+    
+    
+    .search_area{
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 260px;
+  }
+  .search_area input{
+      height: 30px;
+    width: 250px;
+  }
+  .search_area button{
+     width: 100px;
+    height: 36px;
+    border: 1px solid;
+  }
+    
+    
   </style>
 
   <!-- 돋보기-->
   <script src="https://kit.fontawesome.com/8eb5905426.js" crossorigin="anonymous"></script>
-
-  <!--사용자 위치 파악-->
-<script>
-    (function () {
-      window.onload = function () {
-        var startPos;
-        var geoSuccess = function (position) {
-          startPos = position;
-          document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-          document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-        };
-        navigator.geolocation.getCurrentPosition(geoSuccess);
-      };
-    })();
-  </script>
 
   <title>게시글 검색</title>
 </head>
@@ -398,7 +433,7 @@
   </header>
 
   <!--검색 기능-->
-   <div class="container">
+   <%-- <div class="container">
       <div class="search-container">
          <form id ='searchForm' action="list" method='get'>
             <select class="selectbox" name='type'>
@@ -418,14 +453,33 @@
                value='<c:out value="${pageMaker.cri.amount }"/>'>
             <button class="fa fa-search"></button>
          </form>
+         <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+         <button>Search</button>
       </div>
-   </div>
+   </div> --%>
+   
+    <div class="search_wrap">
+        <div class="search_area">
+        	<select name="type">
+                <option value="" <c:out value="${pageMaker.cri.type == null?'selected':'' }"/>>--</option>
+                <option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':'' }"/>>제목</option>
+                <option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':'' }"/>>내용</option>
+                <option value="W" <c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/>>작성자</option>
+                <option value="TC" <c:out value="${pageMaker.cri.type eq 'TC'?'selected':'' }"/>>제목 + 내용</option>
+                <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/>>제목 + 작성자</option>
+                <option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/>>제목 + 내용 + 작성자</option>
+            </select>    
+            <input type="text" name="keyword" value="${pageMaker.cri.keyword }">
+            <button>Search</button>
+        </div>
+    </div>    
+ 
 
-   <form id='actionForm' action="list" method="get">
+   <form id='moveForm' method="get">
       <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
       <input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
-      <input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type }"/>'> <input
-         type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword }"/>'>
+      <input type='hidden' name='type' value='${pageMaker.cri.type }'> 
+      <input type='hidden' name='keyword' value='${pageMaker.cri.keyword }'>
    </form>
     <!-- 메인 메뉴 -->
 
@@ -445,6 +499,7 @@
       data-restaurant_uuid=""
       data-restaurant_count=""
       data-keyword="">
+
 
   <article class="contents">
     <header class="basic-info-list">
@@ -467,24 +522,10 @@
 
     <div class="container-list" id="contents_width">
       <div class="inner">
-   <table width="100%" class="table table-striped table-bordered table-hover">
-		<!-- 검색 결과 -->
-		<c:forEach items="${List }" var="board">
-          <tr class="odd gradeX">
-              <td><c:out value="${curfing.bno }"/></td>
-              <td><a class='move' href='<c:out value="${curfing.bno }"/>'>
-              <c:out value="${curfing.cafename }"/>
-              </a></td>
-              <td><c:out value="${curfing.address }"/></td>
-              <%-- <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }"/></td>
-              <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate }"/></td> --%>
-          </tr>
-        </c:forEach>
-	</table>
         <!-- 해당 레스토랑 목록 -->
         <section id="contents_list">
           <p class="hidden">목록</p>
-<c:forEach items="${List}" var="curfing">
+		<c:forEach items="${list}" var="curfing">
           <ul class="list-restaurants type-single-big top_list_restaurant_list">
             <li class="toplist_list">
               <div class="with-review">
@@ -562,6 +603,29 @@
           </ul>
           </c:forEach> 
 
+		<div class="pageInfo_wrap">
+			<div class="pageInfo_area">
+				<ul id="pageInfo" class="pageInfo">
+					<!-- 이전페이지 버튼 -->
+	                <c:if test="${pageMaker.prev}">
+	                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}">Previous</a></li>
+	                </c:if>
+				
+					<!-- 각 번호 페이지 버튼 -->
+	                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+	                    <li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="/board/list?pageNum=${num}">${num}</a></li>
+	                </c:forEach>
+
+	                <!-- 다음페이지 버튼 -->
+	                <c:if test="${pageMaker.next}">
+	                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }">Next</a></li>
+	                </c:if>   					
+
+				</ul>
+			</div>
+		</div>
+		
+		
           <div class="more_btn_wrapper" role="button">
               더보기
             
@@ -634,25 +698,61 @@
   </footer>
   
   <script type="text/javascript">
-var searchForm = $("#searchForm"); //검색을 눌렀을 떄 이벤트 적용
-$("#searchForm button").on("click", function(e){
-   
-   if(!searchForm.find("option:selected").val()){
-      alert("검색 종류를 선택하세요");
-      return false;
-   }
-   
-   if(!searchForm.find("input[name='keyword']").val()){
-      alert("키워드를 입력하세요.");
-      return false
-   }
-   
-   searchForm.find("input[name='pageNum']").val("1");//검색해서 첫번째 페이지로 이동하도록 하기위해
-   e.preventDefault();
-   searchForm.submit();
-   
-   
-});
+  
+  let moveForm = $("#moveForm");
+  
+  $(".move").on("click", function(e){
+	  e.preventDefault();
+
+      moveForm.append("<input type='hidden' name='bno' value='" + $(this).attr("href")+ "'>");
+      moveForm.attr("action", "/board/get");
+      moveForm.submit();
+  }
+  /* var actionForm =$("#actionForm");
+	
+	$(".pageInfo a").on("click",function(e){
+	e.preventDefault();
+	console.log('click');
+	actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+	actionForm.submit();
+	}); */
+
+    $(".pageInfo a").on("click", function(e){
+ 
+        e.preventDefault();
+        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+        moveForm.attr("action", "/board/list");
+        moveForm.submit();
+        
+    });
+
+
+  
+  
+
+	 $(".search_area button").on("click", function(e){
+	        e.preventDefault();
+	        
+	        let type = $(".search_area select").val();
+	        let keyword = $(".search_area input[name='keyword']").val();
+	        
+	        if(!type){
+	            alert("검색 종류를 선택하세요.");
+	            return false;
+	        }
+	        
+	        if(!keyword){
+	            alert("키워드를 입력하세요.");
+	            return false;
+	        }        
+	        
+	        moveForm.find("input[name='type']").val(type);
+	        moveForm.find("input[name='keyword']").val(keyword);
+	        moveForm.find("input[name='pageNum']").val(1);
+	        moveForm.attr("action", "/board/list");
+	        moveForm.submit();
+	    });
+
 
 
 

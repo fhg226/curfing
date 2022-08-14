@@ -6,29 +6,21 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.curfing.domain.BoardVO;
+import com.curfing.domain.Criteria;
 
 
 
 public interface BoardMapper {
 
-//  @Select("select * from t_board where bno>0;")
+	//게시판 등록
    public List<BoardVO> getList();
+
+   public List<BoardVO> getListPaging(Criteria cri);
    
-   
-   
-   public void insert(BoardVO board);
-   
-   
-   public void insertSelectKey(BoardVO board);
-   
+   public int getTotal(Criteria cri);
   
-   public BoardVO read(Long bno);
-   
-//   public void delete(Long bno);
-   public int delete(Long bno);
-   
-   public int update(BoardVO board);
    
    
-   public void updateReplyCnt(@Param("bno") Long bno, @Param("amount") int amount);
+   
+   
 }

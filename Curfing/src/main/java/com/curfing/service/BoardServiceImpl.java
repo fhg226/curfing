@@ -18,12 +18,6 @@ public class BoardServiceImpl implements BoardService{
 
 	private final BoardMapper mapper;
 	
-	@Override
-	public BoardVO get(Long bno) {
-		log.info("get 입니다");
-		
-		return mapper.read(bno);
-	}
 
 	@Override
 	public List<BoardVO> getList(Criteria cri) {
@@ -33,9 +27,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int getTotalCount(Criteria cri) {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<BoardVO> getListPaging(Criteria cri) {
+		
+		return mapper.getListPaging(cri);
+	}
+
+
+	@Override
+	public int getTotal(Criteria cri) {
+	
+		return mapper.getTotal(cri);
 	}
 
 }
