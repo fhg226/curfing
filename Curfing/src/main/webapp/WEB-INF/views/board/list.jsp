@@ -15,12 +15,10 @@
       text-align: right;
       padding-top: 5px;
     }
-
     .topNav li {
       display: inline-block;
       margin-left: 2px;
     }
-
     .topNav li>a {
       display: inline-block;
       padding: 5px 5px;
@@ -28,32 +26,26 @@
       border-radius: 8px;
       color: azure;
     }
-
     .topNav li>a:hover {
       color: azure;
       background-color: cadetblue;
     }
-
     /* 로고 */
     .logo {
       text-align: center;
       font-size: 90pt;
       margin-bottom: 50px;
     }
-
     .logo>a {
       color: rgb(233, 159, 159);
     }
-
     /* 검색 */
     .search-container {
       position: relative;
       text-align: center;
       width: 500px;
       margin: 0 auto;
-
     }
-
     input {
       width: 80%;
       border-radius: 20px;
@@ -61,30 +53,23 @@
       margin-bottom: 50px;
       padding: 15px 17px;
     }
-
     .fa-search {
       position: absolute;
       right: 50px;
       top: 15px;
-
     }
-
     /* 메인 메뉴 */
     .mainMenu {
       text-align: center;
       margin-bottom: 50px;
       border-bottom: 2px solid rgb(233, 159, 159);
     }
-
     .mainMenu li {
-
       display: inline-block;
       font-weight: bold;
       font-size: 20px;
       padding: 10px 40px;
-
     }
-
     .mainMenu li>a {
       display: inline-block;
       padding: 5px 20px;
@@ -92,30 +77,24 @@
       border-radius: 15px;
       color: azure;
     }
-
     .mainMenu li>a:hover {
       text-decoration: none;
       background-color: cadetblue;
     }
-
    
-
     /* 본문 상단 페이지 제목 및 설명 */
     .pg-toplist .basic-info-list {
       background-color: #f7f7f7;
     }
-
     .inner {
     padding-bottom: 10px;
     }
-
     .pg-toplist .basic-info-list .status {
       font-size: 0.625rem;
       color: #9b9b9b;
       line-height: 1.2em;
       text-align: center;
     }
-
     p {
       display: block;
       margin-block-start: 1em;
@@ -123,7 +102,6 @@
       margin-inline-start: 0px;
       margin-inline-end: 0px;
     }
-
     .pg-toplist .basic-info-list .title {
       margin-top: 11px;
       font-size: 1.625rem;
@@ -131,7 +109,6 @@
       line-height: 1.2em;
       text-align: center;
     }
-
   .pg-toplist .basic-info-list .desc {
     margin-top: 9px;
     font-size: 1.063rem;
@@ -139,19 +116,15 @@
     line-height: 1.2em;
     text-align: center;
   }
-
   .list-restaurants.type-single-big {
     margin-top: 5px;
   }
-
   .list-restaurants {
     overflow: hidden;
   }
-
   ol, ul, ul li {
     list-style: none;
   }
-
   ul {
     display: block;
     margin-block-start: 1em;
@@ -160,33 +133,27 @@
     margin-inline-end: 0px;
     
   }
-
   .list-restaurants.type-single-big>li {
     float: none;
     padding: 18px 15px;
     width: 100%;
     border-bottom: 1px solid #dbdbdb;
   }
-
   .list-restaurants>li {
     box-sizing: border-box;
   }
-
   li {
     display: list-item;
     text-align: -webkit-match-parent;
   }
-
   .list-restaurants.type-single-big>li .with-review {
     position: relative;
   }
-
   .restaurant-item {
     position: relative;
     width: 260px;
     display: inline-block;
   }
-
   .restaurant-item .thumb {
     position: relative;
     overflow: hidden;
@@ -195,14 +162,12 @@
     background-position: 50% 50%;
     
   }
-
   .list-content{
     display: inline-block;
     width: 635px;
     
     padding-left: 10px;
   }
-
    .restaurant-item .info {
     position: relative;
     text-decoration: none;
@@ -214,7 +179,6 @@
     text-align: center;
     position: relative;
   }
-
   .pg-toplist .container-list .wannago_wrap .favorite {
     position: static;
     top: 12px;
@@ -228,13 +192,11 @@
     width: 32px;
     height: 32px;
   }
-
   .btn-type-icon {
     display: inline-block;
     text-indent: -9999px;
     vertical-align: middle;
   }
-
   button {
     appearance: none;
     cursor: pointer;
@@ -242,13 +204,11 @@
     border-radius: 0;
     background-color: transparent;
   }
-
   .pg-toplist .container-list .wannago_wrap .wannago_txt {
     font-size: 0.7rem;
     color: #9b9b9b;
     margin-top: 6px;
   }
-
   .restaurant-item .info .title {
     display: inline-block;
     overflow: hidden;
@@ -260,7 +220,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
   .restaurant-item .info .point {
     display: inline-block;
     font-size: 1.375rem;
@@ -268,7 +227,6 @@
     vertical-align: middle;
     line-height: 1em;
   }
-
   .type-single-big .review-content {
     display: block;
     position: relative;
@@ -277,12 +235,10 @@
     height: auto;
     min-height: 40px;
   }
-
   .list-restaurants .review-content {
     font-size: 0.875rem;
     line-height: 21px;
   }
-
   .type-single-big .review-content .user {
     display: inline;
     position: static;
@@ -290,7 +246,6 @@
     font-size: 0.688rem;
     line-height: 17px;
   }
-
   .type-single-big .review-content .user>.thumb {
     position: absolute;
     top: 4px;
@@ -300,14 +255,12 @@
     width: 30px;
     border-radius: 30px;
   }
-
   .type-single-big .review-content .user>figcaption {
     display: inline;
     font-weight: bold;
     color: #000000;
     line-height: 18px;
   }
-
   .list-restaurants .review-content {
     position: relative;
     overflow: hidden;
@@ -318,16 +271,13 @@
     line-height: 21px;
     color: #333;
   }
-
   .pg-toplist .container-list .long_review {
     display: none;
   }
-
   .pg-toplist .container-list .review_more_btn {
     color: #ff792a;
     cursor: pointer;
   }
-
   .pg-toplist .container-list .restaurant-more-name {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -337,7 +287,6 @@
     text-align: right;
     width: 570px;
   }
-
   .pg-toplist .container-list .restaurant-more-text {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -346,7 +295,6 @@
     display: inline-block;
     text-align: right;
   }
-
   .more_btn_wrapper {
     display: flex;
     justify-content: space-between;
@@ -361,7 +309,6 @@
     color: #ff792a;
     cursor: pointer;
     }
-
     .more_btn_wrapper:before {
     background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
     background-position: -588px -539px;
@@ -371,7 +318,6 @@
     margin-right: 17px;
     margin-left: 420px;
     }
-
     .more_btn_wrapper:after {
     background-image: url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
     background-position: -588px -539px;
@@ -381,7 +327,6 @@
     margin-left: 17px;
     margin-right: 420px;
     }
-
   /* footer */
   .bottom {
       border-top: 1px solid grey;
@@ -390,24 +335,19 @@
       display: flex;
       justify-content: space-around;
       background-color: white;
-
     }
-
     .icon li {
       display: inline-block;
       text-align: center;
     }
-
     .info {
       padding-top: 30px;
   
     }
-
     .info li {
       display: inline-block;
       text-align: start;
     }
-
     .copyright {
       background-color: white;
       text-align: left;
@@ -433,7 +373,7 @@
     })();
   </script>
 
-  <title>리스트</title>
+  <title>게시글 검색</title>
 </head>
 
 <body class="top_list_page_body">
@@ -451,20 +391,42 @@
 
     <!-- 로고 -->
     <div class="logo" mathod="get">
-     <a href="main">
+    <a href="main">
         Curfing
       </a>
     </div>
   </header>
 
   <!--검색 기능-->
-  <div class="container">
-    <div class="search-container">
-      <form action="/action_page.php">
-        <input type="text" placeholder="검색" name="search">
-        <button type="submit" class="fa fa-search"></button>
-      </form>
-    </div>
+   <div class="container">
+      <div class="search-container">
+         <form id ='searchForm' action="list" method='get'>
+            <select class="selectbox" name='type'>
+               <option value="${pageMaker.cri.type == null? 'selected' : '' }">--</option>
+               <option value="T"
+                  <c:out value="${pageMaker.cri.type eq 'T'? 'selected' : '' }"/>>가게명</option>
+               <option value="C"
+                  <c:out value="${pageMaker.cri.type eq 'C'? 'selected' : '' }"/>>지역</option>
+               <option value="M"
+                  <c:out value="${pageMaker.cri.type eq 'M'? 'selected' : '' }"/>>태그</option>
+            </select> 
+            <input type="text" placeholder="검색" name="keyword"
+               value='<c:out value="${pageMaker.cri.keyword }"/>'> 
+            <input type='hidden' name='pageNum'
+               value='<c:out value="${pageMaker.cri.pageNum }"/>'> 
+            <input type='hidden' name='amount'
+               value='<c:out value="${pageMaker.cri.amount }"/>'>
+            <button class="fa fa-search"></button>
+         </form>
+      </div>
+   </div>
+
+   <form id='actionForm' action="list" method="get">
+      <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
+      <input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
+      <input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type }"/>'> <input
+         type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword }"/>'>
+   </form>
     <!-- 메인 메뉴 -->
 
     <div class="mainMenu">
@@ -496,16 +458,29 @@
           </time>
         </p>
 
-        <h1 class="title">요즘뜨는</h1>
+        <h1 class="title">게시글 리스트 출력</h1>
         <h2 class="desc">
-             핫 플레이스 모르면 .....
+             많이 방문하시고 찾으시는 카페 
         </h2>
       </div>
     </header>
 
     <div class="container-list" id="contents_width">
       <div class="inner">
-
+   <table width="100%" class="table table-striped table-bordered table-hover">
+		<!-- 검색 결과 -->
+		<c:forEach items="${List }" var="board">
+          <tr class="odd gradeX">
+              <td><c:out value="${curfing.bno }"/></td>
+              <td><a class='move' href='<c:out value="${curfing.bno }"/>'>
+              <c:out value="${curfing.cafename }"/>
+              </a></td>
+              <td><c:out value="${curfing.address }"/></td>
+              <%-- <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate }"/></td>
+              <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updatedate }"/></td> --%>
+          </tr>
+        </c:forEach>
+	</table>
         <!-- 해당 레스토랑 목록 -->
         <section id="contents_list">
           <p class="hidden">목록</p>
@@ -657,6 +632,32 @@
     </div>
     </div>
   </footer>
+  
+  <script type="text/javascript">
+var searchForm = $("#searchForm"); //검색을 눌렀을 떄 이벤트 적용
+$("#searchForm button").on("click", function(e){
+   
+   if(!searchForm.find("option:selected").val()){
+      alert("검색 종류를 선택하세요");
+      return false;
+   }
+   
+   if(!searchForm.find("input[name='keyword']").val()){
+      alert("키워드를 입력하세요.");
+      return false
+   }
+   
+   searchForm.find("input[name='pageNum']").val("1");//검색해서 첫번째 페이지로 이동하도록 하기위해
+   e.preventDefault();
+   searchForm.submit();
+   
+   
+});
+
+
+
+</script>
+  
 </body>
 
 </html>

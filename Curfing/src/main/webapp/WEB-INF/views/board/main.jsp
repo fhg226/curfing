@@ -59,7 +59,7 @@
 
 .selectbox {
    width: 80px;
-   height: 30px;
+   height: 45px;
    border-radius: 20px;
 }
 
@@ -234,7 +234,7 @@ h2 {
    <!--검색 기능-->
    <div class="container">
       <div class="search-container">
-         <form id ='searchForm' action="/board/list" method='get'>
+       <!--   <form id ='searchForm' action="list" method='get'> -->
             <select class="selectbox" name='type'>
                <option value="${pageMaker.cri.type == null? 'selected' : '' }">--</option>
                <option value="T"
@@ -243,18 +243,22 @@ h2 {
                   <c:out value="${pageMaker.cri.type eq 'C'? 'selected' : '' }"/>>지역</option>
                <option value="M"
                   <c:out value="${pageMaker.cri.type eq 'M'? 'selected' : '' }"/>>태그</option>
-            </select> <input type="text" placeholder="검색" name="keyword"
-               value='<c:out value="${pageMaker.cri.keyword }"/>'> <input
-               type='hidden' name='pageNum'
-               value='<c:out value="${pageMaker.cri.pageNum }"/>'> <input
-               type='hidden' name='amount'
+               <option value="TC" <c:out value="${pageMaker.cri.type eq 'TC'?'selected':'' }"/>>가게명 + 지역</option>
+                <option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/>>가게명 + 태그</option>
+                <option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/>>가게명 + 지역 + 태그</option>
+            </select> 
+            <input type="text" placeholder="검색" name="keyword"
+               value='<c:out value="${pageMaker.cri.keyword }"/>'> 
+            <input type='hidden' name='pageNum'
+               value='<c:out value="${pageMaker.cri.pageNum }"/>'> 
+            <input type='hidden' name='amount'
                value='<c:out value="${pageMaker.cri.amount }"/>'>
             <button class="fa fa-search"></button>
-         </form>
+         <!-- </form> -->
       </div>
    </div>
 
-   <form id='actionForm' action="/board/list" method="get">
+   <form id='actionForm' action="list" method="get">
       <input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum }'>
       <input type='hidden' name='amount' value='${pageMaker.cri.amount }'>
       <input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type }"/>'> <input
@@ -416,22 +420,27 @@ h2 {
    </footer>
 
 <script type="text/javascript">
-var search-container = $("#searchForm"); //검색을 눌렀을 떄 이벤트 적용
-$("#searchForm button").on("click", function(e){
-   
-   if(!searchForm.find("option:selected").val()){
-      alert("검색 종류를 선택하세요");
-      return false;
-   }
-   
-   if(!searchForm.find("input[name='keyword']").val()){
-      alert("키워드를 입력하세요.");
-      return false
-   }
-   
-   searchForm.find("input[name='pageNum']").val("1");//검색해서 첫번째 페이지로 이동하도록 하기위해
-   e.preventDefault();
-   search-container.submit();
+/* var searchForm = $(".search-container"); //검색을 눌렀을 떄 이벤트 적용
+ */$(".search-container button").on("click", function(e){
+	e.preventDefault();
+    
+    let type = $(".search-container select").val();
+    let keyword = $(".search-container input[name='keyword']").val();
+    
+    if(!type){
+        alert("검색 종류를 선택하세요.");
+        return false;
+    }
+    
+    if(!keyword){
+        alert("키워드를 입력하세요.");
+        return false;
+    }        
+    
+    moveForm.find("input[name='type']").val(type);
+    moveForm.find("input[name='keyword']").val(keyword);
+    moveForm.find("input[name='pageNum']").val(1);
+    moveForm.submit();
    
    
 });

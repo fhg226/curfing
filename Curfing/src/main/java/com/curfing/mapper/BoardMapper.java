@@ -11,7 +11,7 @@ import com.curfing.domain.BoardVO;
 
 public interface BoardMapper {
 
-//   @Select("select * from cafe_r where bno>0;")
+//  @Select("select * from t_board where bno>0;")
    public List<BoardVO> getList();
    
    

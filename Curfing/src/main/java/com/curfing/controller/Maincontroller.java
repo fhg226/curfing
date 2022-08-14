@@ -72,7 +72,12 @@ public class Maincontroller {
 		return "/board/atmosphere";
 	}
 	
-	
+	//검색 결과 리스트
+	@RequestMapping(value="/list", method = RequestMethod.GET)
+	public String list() {
+		log.info("list 입니다.");
+		return "/board/list";
+	}
 	
 	
 	

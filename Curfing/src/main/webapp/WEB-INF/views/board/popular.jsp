@@ -478,8 +478,8 @@
                           <p class="wannago_txt">찜 </p>
                         </div>
                         <span class="title ">
-                         	<c:out value="${curfing.rno}"></c:out>
-                            <h3><c:out value="${curfing.cafaname}"/></h3>
+                         	<c:out value="${curfing.bno}"></c:out>
+                            <h3><c:out value="${curfing.cafename}"/></h3>
                           
                         </span>
                         <strong class="point ">
@@ -498,7 +498,7 @@
                            data-error="#">
                       </div>
                       <figcaption class="">
-                        ID :<c:out value="${curfing.cafeid}"/>
+                        ID :<c:out value="${curfing.cafeinfo}"/>
                       </figcaption>
                     </figure>
                     <p class="short_review ">

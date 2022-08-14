@@ -17,14 +17,15 @@ public class BoardVO {
 	
 	private int rno;
 	private int bno;
-	private String cafaname;
+	private int mno;
+	private int menuno;
+	private String cafename;
 	private String address;
 	private int phone;
-	private String reply;
+	private String cafeinfo;
 	private String price;
 	private String car;
 	private String opentime;
 	private String dayoff;
-	private String image;
-	private String cafeid;
+
 }
