@@ -1,17 +1,13 @@
 package com.curfing.controller;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.curfing.domain.CurfingVO;
 import com.curfing.service.CurfingService;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -28,5 +24,39 @@ public class BestController {
 			model.addAttribute("List", service.getList()); 
 			return "popular";
 		}
+		
+		
 
+		@GetMapping("/scope")
+		public String sget(Model model) {
+			
+			log.info("sget...");
+			model.addAttribute("List", service.getList()); 
+			return "scope";
+		}
+		
+		@GetMapping("/rising")
+		public String rget(Model model) {
+			
+			log.info("rget...");
+			model.addAttribute("List", service.getList()); 
+			return "rising";
+		}
+		
+		
+		@GetMapping("/atmosphere")
+		public String aget(Model model) {
+			
+			log.info("rget...");
+			model.addAttribute("List", service.getList()); 
+			return "atmosphere";
+		}
+		
+		
+		@GetMapping("/content")
+		public String cget(Model model) {
+			log.info("cget....");
+			model.addAttribute("List",service.getList());
+			return "content";
+		}
 }
