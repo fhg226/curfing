@@ -27,7 +27,7 @@ public class BestController {
 		
 		
 
-		@GetMapping("/scope")
+		@GetMapping("/scope") // 별점
 		public String sget(Model model) {
 			
 			log.info("sget...");
@@ -35,7 +35,7 @@ public class BestController {
 			return "scope";
 		}
 		
-		@GetMapping("/rising")
+		@GetMapping("/rising") // 요즘뜨는
 		public String rget(Model model) {
 			
 			log.info("rget...");
@@ -44,7 +44,7 @@ public class BestController {
 		}
 		
 		
-		@GetMapping("/atmosphere")
+		@GetMapping("/atmosphere")// 분위기 
 		public String aget(Model model) {
 			
 			log.info("rget...");
@@ -53,7 +53,7 @@ public class BestController {
 		}
 		
 		
-		@GetMapping("/content")
+		@GetMapping("/content") // 상세 페이지 
 		public String cget(Model model) {
 			log.info("cget....");
 			model.addAttribute("List",service.getList());
