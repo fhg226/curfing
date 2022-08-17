@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>카페 상세 설명</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <style>
 * {
 	margin: 0px;
@@ -470,7 +472,7 @@ img {
     td {
     display: table-cell;
     vertical-align: inherit;
-    padding: 10px;
+    padding: 10px 30px;
     }
 
     .under_line {
@@ -882,7 +884,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
+                       src="resources/cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -902,7 +904,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
+                       src="resources/cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -922,7 +924,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
+                       src="resources/cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -942,7 +944,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
+                       src="resources/cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -962,7 +964,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
+                       src="resources/cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -1002,7 +1004,7 @@ img {
             <header>
               <div class="cafe_title_wrap">
                 <span class="title">
-                  <h1 class="cafe_name">카페 이름</h1>
+                  <h1 class="cafe_name"><c:out value="${content.name }" /></h1>
                     <strong class="rate-point ">
                       <span>평점</span>
                     </strong>
@@ -1012,15 +1014,19 @@ img {
 
                 <div class="cafe_action_button_wrap">
 
-                  <button class="review_writing_button" data-cafe_key="">
+                  <button data-oper="review" class="review_writing_button" data-cafe_key="">
                     <i class="review_writing_button_icon"></i>
                     <span class="review_writing_button_text">리뷰쓰기</span>
                   </button>
 
                   <div class="wannago_wrap">
-                    <button class="btn-type-icon favorite wannago_btn " data-cafe_uuid="" data-action_id=""></button>
+                    <button data-oper="wish" class="btn-type-icon favorite wannago_btn " data-cafe_uuid="" data-action_id=""></button>
                     <p class="wannago_txt">찜</p>
                   </div>
+                  
+                  <form id="operForm" action="/board/review" method="get">
+                    <input type="hidden" id="bno" name="bno" value='<c:out value="${content.bno }" />'>
+                  </form>
                 </div>
               </div>
 
@@ -1042,7 +1048,7 @@ img {
               <tbody>
                 <tr class="only-desktop">
                   <th>주소</th>
-                  <td>무슨시 무슨구 무슨길 어디<br/>
+                  <td><c:out value="${content.address }" /><br/>
                         <span class="cafe__InfoAddress--Rectangle">지번</span>
                       <span class="cafe__InfoAddress--Text">지번 주소</span>
                   </td>
@@ -1050,43 +1056,43 @@ img {
 
                 <tr class="only-desktop">
                   <th>전화번호</th>
-                  <td>123-456-7899</td>
+                  <td><c:out value="${content.phone }" /></td>
                 </tr>
 
                 <tr>
                   <th>음식 종류</th>
                   <td>
-                    <span>카페 / 디저트</span>
+                    <span><c:out value="${content.foodType }" /></span>
                   </td>
                 </tr>
 
                 <tr>
                   <th>가격대</th>
-                  <td>?만원-?만원</td>
+                  <td><c:out value="${content.price }" /></td>
                 </tr>
 
                 <tr>
                   <th>주차</th>
-                  <td>주차 가능 여부 </td>
+                  <td><c:out value="${content.parking }" /> </td>
                 </tr>
 
                 <tr>
                   <th>영업시간</th>
-                  <td>00:00 - 00:00</td>
+                  <td><c:out value="${content.salesTime }" /></td>
                 </tr>
 
 
 
                 <tr>
                   <th>휴일</th>
-                  <td>요일</td>
+                  <td><c:out value="${content.holiday }" /></td>
                 </tr>
 
                 <tr>
                   <th>웹 사이트</th>
                   <td>
-                    <a href="#" class="under_line" target="_blank" style="color: black;">
-                      홈페이지 or 인스타그램으로 가기
+                    <a href='<c:out value="${content.site }" />' class="under_line" target="_blank" style="color: black;">
+                      <c:out value="${content.site }" />
                     </a>
                   </td>
                 </tr>
@@ -1096,7 +1102,7 @@ img {
                   <td class="menu_td">
                     <ul class="cafe_MenuList">
                         <li class="cafe_MenuItem">
-                          <span class="cafe_Menu">메뉴1</span>
+                          <span class="cafe_Menu"><c:out value="${content.menu }" /></span>
                             <span class="cafe_MenuPrice">가격1</span>
                         </li>
                         <li class="cafe_MenuItem">
@@ -1141,7 +1147,7 @@ img {
           <section class="cafeReviewList">
             <header class="cafeReviewList__Header">
               <h2 class="cafeReviewList__Title">
-                <span class="cafeReviewList__cafeName">카페 이름</span><span class="cafeReviewList__cafeNameSuffixDesktop"> 리뷰</span>
+                <span class="cafeReviewList__cafeName"><c:out value="${content.name }" /></span><span class="cafeReviewList__cafeNameSuffixDesktop"> 리뷰</span>
                 <span class="cafeReviewList__AllCount">
                   0
                 </span>
@@ -1232,3 +1238,17 @@ img {
 
 
 <%@ include file="../includes/footer.jsp"%>
+
+<script type="text/javascript">
+				$(document).ready(function(){
+					var operForm = $("#operForm");
+					
+					$("button[data-oper='review']").on("click", function(e){
+						operForm.attr("action", "/board/review").submit();
+					});
+					
+					$("button[data-oper='wish']").on("click", function(e){
+						
+					});
+				});
+			</script> 

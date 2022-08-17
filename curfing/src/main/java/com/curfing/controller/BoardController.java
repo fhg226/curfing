@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.curfing.domain.BoardVO;
+import com.curfing.domain.ReviewVO;
 import com.curfing.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,18 @@ public class BoardController {
 	
 	private final BoardService service;
 	
-	@GetMapping("/register")
+	@GetMapping("/list")
 	public void list(Model model) {
 		
+		log.info("list......");
+		model.addAttribute("list", service.getList());
+		
+	}
+	
+	@GetMapping("/register")
+	public void register() {
+		
 		log.info("register......");
-		model.addAttribute("register", service.getList());
 		
 	}
 	
@@ -43,8 +51,28 @@ public class BoardController {
 	}
 	
 	@GetMapping("/content")
-	public void get(@RequestParam("bno") long bno, Model model) {
-		log.info("get......");
-		model.addAttribute("board", service.get(bno));
+	public void content(@RequestParam("bno") long bno, Model model) {
+		log.info("content......");
+		model.addAttribute("content", service.get(bno));
+	}
+
+	@GetMapping("/review")
+	public void review(@RequestParam("bno") long bno, @RequestParam("uno") long uno, Model model1, Model model2) {
+		log.info("review......");
+		model1.addAttribute("content", service.get(bno));
+		model2.addAttribute("user", service.getUser(uno));
+		
+	}
+	
+	@PostMapping("/review")
+	public String review(ReviewVO review, RedirectAttributes rttr) {
+		log.info("review......" + review);
+		
+		long bno = service.regReview(review);
+		log.info("BNO ======> " + bno);
+		
+		rttr.addFlashAttribute("result", review.getBno());
+		
+		return "redirect:/board/content?bno=" + bno;
 	}
 }

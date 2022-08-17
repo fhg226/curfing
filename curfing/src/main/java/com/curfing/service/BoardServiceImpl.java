@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.curfing.domain.BoardVO;
+import com.curfing.domain.ReviewVO;
+import com.curfing.domain.UserVO;
 import com.curfing.mapper.BoardMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -52,9 +54,25 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO get(long bno) {
-		log.info("get.......");
+		log.info("get.....");
 		
 		return mapper.read(bno);
+	}
+	
+	@Override
+	public UserVO getUser(long uno) {
+		log.info("getUser....");
+		
+		return mapper.getUser(uno);
+	}
+
+	@Override
+	public long regReview(ReviewVO review) {
+		log.info("review....." + review);
+		
+		mapper.insertReview(review);
+		
+		return review.getBno();
 	}
 
 }

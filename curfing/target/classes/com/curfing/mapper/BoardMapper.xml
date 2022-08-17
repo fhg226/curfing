@@ -10,6 +10,10 @@
 		select * from content where bno > 0
 		]]>
 	</select>
+	
+	<select id="getUser" resultType="com.curfing.domain.UserVO">
+		select * from user_t where uno = #{uno}
+	</select>
 
 	<insert id="insert">
 		insert into content(bno, name, address, phone, foodType, price, parking, salesTime, holiday, site, menu) values(c_seq.nextval, #{name}, #{address}, #{phone}, #{foodType}, #{price}, #{parking}, #{salesTime}, #{holiday}, #{site}, #{menu})
@@ -27,4 +31,7 @@
 		select * from content where bno = #{bno}
 	</select>
 	
+	<insert id="insertReview">
+		insert into review(rno, uno, bno, replygrade, reply, replydate, updatedate) values(seq_review.nextval(), #{uno}, #{bno}, #{replygrade}, #{reply}, #{replydate}, #{updatedate})
+	</insert>
 </mapper>
