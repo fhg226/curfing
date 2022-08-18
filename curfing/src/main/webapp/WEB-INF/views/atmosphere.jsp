@@ -1,11 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ko">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
+%>
+
 <link href="${path}/resources/css/basic.css" rel="stylesheet"/> 	
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="./css/basic.css">
+
 
   <style>
     /* 로그인, 회원가입, 마이페이지 */
@@ -96,6 +105,7 @@
       background-color: cadetblue;
     }
 
+   
 
     /* 본문 상단 페이지 제목 및 설명 */
     .pg-toplist .basic-info-list {
@@ -410,6 +420,32 @@
       text-align: left;
       padding: 10px;
     }
+      .pull-right{
+      margin-left: 660px;
+      width: 980px;
+      height: 30px;
+    }
+  .paginate_button{
+    width: 25px;
+    height: 20px;
+    border-radius: 5px;
+    list-style-type:none;
+    float: left;
+   
+    margin: 1px;
+    background-color: rgb(233, 159, 159);
+     text-align: center;
+  }
+  .paginate_button:hover{
+    background-color: grey;
+  }
+  .paginate_button>a{
+    width: 25px;
+    height: 20px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+     
+  }
   </style>
 
   <!-- 돋보기-->
@@ -485,17 +521,15 @@
     <header class="basic-info-list">
       <div class="inner" style="padding-bottom: 10px">
         <p class="status">
-          <span>
-            클릭수 <!-- 현재 클릭수로 변경 -->
-          </span> |
+     
           <time datetime=""> <!-- 현재 날짜로 변경 -->
-            날짜
+             <%= sf.format(nowTime) %> 
           </time>
         </p>
 
-        <h1 class="title">페이지 제목</h1>
+        <h1 class="title">인기</h1>
         <h2 class="desc">
-          페이지 설명
+             많이 방문하시고 찾으시는 카페 
         </h2>
       </div>
     </header>
@@ -506,21 +540,22 @@
         <!-- 해당 레스토랑 목록 -->
         <section id="contents_list">
           <p class="hidden">목록</p>
-
+<c:forEach items="${List}" var="curfing">
           <ul class="list-restaurants type-single-big top_list_restaurant_list">
             <li class="toplist_list">
               <div class="with-review">
                 <div class="restaurant-item">
-                  <a href="content.html">
+                  <a href="/curfing/content">
                     <div class="thumb">
                       <img class="center-croping lazy"
                            alt="사진 - 주소"
-                           src="./image/list_photo_example.jpg"
+                           src="/resources/image/list_photo_example.jpg"
                            width="260px" height="260px"
                         />
                     </div>
                   </a>
                 </div>
+                
                 <div class="list-content">
                   <div>
                     <figure>
@@ -534,14 +569,14 @@
                           <p class="wannago_txt">찜 </p>
                         </div>
                         <span class="title ">
-                          <a href="content.html">
-                            1.<h3> 카페 이름</h3>
-                          </a>
+                         	<c:out value="${curfing.bno}"></c:out>
+                            <h3><c:out value="${curfing.cafename}"/></h3>
+                          
                         </span>
-                        <strong class="point  ">
+                        <strong class="point ">
                           <span>평점</span>
                         </strong>
-                        <p class="etc ">주소</p>
+                        <p class="etc ">주소:<c:out value="${curfing.address}"/> </p>
                        
                       </div>
                     </figcaption>
@@ -554,20 +589,21 @@
                            data-error="#">
                       </div>
                       <figcaption class="">
-                        아이디
+                        ID :
                       </figcaption>
                     </figure>
                     <p class="short_review ">
                       짧은 리뷰<br>
                       aljfal<br>
                       afadfads<br>
+                      	  클릭수 <!-- 현재 클릭수로 변경 -->
                     </p>
-    
-                    <p class="long_review ">
-                      긴 리뷰
-                    </p>
+                    
+          	
+     
     
                       <span class="review_more_btn" >더보기</span>
+                       
                   </div>
                   <div>
                     <a href="content.html" class="btn-detail">
@@ -578,635 +614,59 @@
                 </div>
               </li>
 
-              <li class="toplist_list">
-                <div class="with-review">
-                  <div class="restaurant-item">
-                    <a href="#">
-                      <div class="thumb">
-                        <img class="center-croping lazy"
-                             alt="사진 - 주소"
-                             src="./image/list_photo_example.jpg"
-                             width="260px" height="260px"
-                          />
-                      </div>
-                    </a>
-                  </div>
-                  <div class="list-content">
-                    <div>
-                      <figure>
-                        <figcaption>
-                          <div class="info">
-                            <div class="wannago_wrap">
-                              <button class="btn-type-icon favorite wannago_btn "
-                              data-restaurant_uuid=""
-                              data-action_id="">
-                            </button>
-                            <p class="wannago_txt">찜 </p>
-                          </div>
-                          <span class="title ">
-                            <a href="#">
-                              2.<h3> 카페 이름</h3>
-                            </a>
-                          </span>
-                          <strong class="point  ">
-                            <span>평점</span>
-                          </strong>
-                          <p class="etc ">주소</p>
-                         
-                        </div>
-                      </figcaption>
-                    </figure>
-                    </div>
-                    <div class="review-content no-bottom">
-                      <figure class="user">
-                        <div class="thumb lazy"
-                             data-original="#"
-                             data-error="#">
-                        </div>
-                        <figcaption class="">
-                          아이디
-                        </figcaption>
-                      </figure>
-                      <p class="short_review ">
-                        짧은 리뷰<br>
-                        aljfal<br>
-                        afadfads<br>
-                      </p>
-      
-                      <p class="long_review ">
-                        긴 리뷰
-                      </p>
-      
-                        <span class="review_more_btn" >더보기</span>
-                    </div>
-                    <div>
-                      <a href="#" class="btn-detail">
-                        <div class="restaurant-more-name">카페 이름</div>
-                        <div class="restaurant-more-text">더보기 ></div>
-                    </a>
-                    </div>
-                  </div>
-                </li>
-                <li class="toplist_list">
-                  <div class="with-review">
-                    <div class="restaurant-item">
-                      <a href="#">
-                        <div class="thumb">
-                          <img class="center-croping lazy"
-                               alt="사진 - 주소"
-                               src="./image/list_photo_example.jpg"
-                               width="260px" height="260px"
-                            />
-                        </div>
-                      </a>
-                    </div>
-                    <div class="list-content">
-                      <div>
-                        <figure>
-                          <figcaption>
-                            <div class="info">
-                              <div class="wannago_wrap">
-                                <button class="btn-type-icon favorite wannago_btn "
-                                data-restaurant_uuid=""
-                                data-action_id="">
-                              </button>
-                              <p class="wannago_txt">찜 </p>
-                            </div>
-                            <span class="title ">
-                              <a href="#">
-                                3.<h3> 카페 이름</h3>
-                              </a>
-                            </span>
-                            <strong class="point  ">
-                              <span>평점</span>
-                            </strong>
-                            <p class="etc ">주소</p>
-                           
-                          </div>
-                        </figcaption>
-                      </figure>
-                      </div>
-                      <div class="review-content no-bottom">
-                        <figure class="user">
-                          <div class="thumb lazy"
-                               data-original="#"
-                               data-error="#">
-                          </div>
-                          <figcaption class="">
-                            아이디
-                          </figcaption>
-                        </figure>
-                        <p class="short_review ">
-                          짧은 리뷰<br>
-                          aljfal<br>
-                          afadfads<br>
-                        </p>
-        
-                        <p class="long_review ">
-                          긴 리뷰
-                        </p>
-        
-                          <span class="review_more_btn" >더보기</span>
-                      </div>
-                      <div>
-                        <a href="#" class="btn-detail">
-                          <div class="restaurant-more-name">카페 이름</div>
-                          <div class="restaurant-more-text">더보기 ></div>
-                      </a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="toplist_list">
-                    <div class="with-review">
-                      <div class="restaurant-item">
-                        <a href="#">
-                          <div class="thumb">
-                            <img class="center-croping lazy"
-                                 alt="사진 - 주소"
-                                 src="./image/list_photo_example.jpg"
-                                 width="260px" height="260px"
-                              />
-                          </div>
-                        </a>
-                      </div>
-                      <div class="list-content">
-                        <div>
-                          <figure>
-                            <figcaption>
-                              <div class="info">
-                                <div class="wannago_wrap">
-                                  <button class="btn-type-icon favorite wannago_btn "
-                                  data-restaurant_uuid=""
-                                  data-action_id="">
-                                </button>
-                                <p class="wannago_txt">찜 </p>
-                              </div>
-                              <span class="title ">
-                                <a href="#">
-                                  4.<h3> 카페 이름</h3>
-                                </a>
-                              </span>
-                              <strong class="point  ">
-                                <span>평점</span>
-                              </strong>
-                              <p class="etc ">주소</p>
-                             
-                            </div>
-                          </figcaption>
-                        </figure>
-                        </div>
-                        <div class="review-content no-bottom">
-                          <figure class="user">
-                            <div class="thumb lazy"
-                                 data-original="#"
-                                 data-error="#">
-                            </div>
-                            <figcaption class="">
-                              아이디
-                            </figcaption>
-                          </figure>
-                          <p class="short_review ">
-                            짧은 리뷰<br>
-                            aljfal<br>
-                            afadfads<br>
-                          </p>
-          
-                          <p class="long_review ">
-                            긴 리뷰
-                          </p>
-          
-                            <span class="review_more_btn" >더보기</span>
-                        </div>
-                        <div>
-                          <a href="#" class="btn-detail">
-                            <div class="restaurant-more-name">카페 이름</div>
-                            <div class="restaurant-more-text">더보기 ></div>
-                        </a>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="toplist_list">
-                      <div class="with-review">
-                        <div class="restaurant-item">
-                          <a href="#">
-                            <div class="thumb">
-                              <img class="center-croping lazy"
-                                   alt="사진 - 주소"
-                                   src="./image/list_photo_example.jpg"
-                                   width="260px" height="260px"
-                                />
-                            </div>
-                          </a>
-                        </div>
-                        <div class="list-content">
-                          <div>
-                            <figure>
-                              <figcaption>
-                                <div class="info">
-                                  <div class="wannago_wrap">
-                                    <button class="btn-type-icon favorite wannago_btn "
-                                    data-restaurant_uuid=""
-                                    data-action_id="">
-                                  </button>
-                                  <p class="wannago_txt">찜 </p>
-                                </div>
-                                <span class="title ">
-                                  <a href="#">
-                                    5.<h3> 카페 이름</h3>
-                                  </a>
-                                </span>
-                                <strong class="point  ">
-                                  <span>평점</span>
-                                </strong>
-                                <p class="etc ">주소</p>
-                               
-                              </div>
-                            </figcaption>
-                          </figure>
-                          </div>
-                          <div class="review-content no-bottom">
-                            <figure class="user">
-                              <div class="thumb lazy"
-                                   data-original="#"
-                                   data-error="#">
-                              </div>
-                              <figcaption class="">
-                                아이디
-                              </figcaption>
-                            </figure>
-                            <p class="short_review ">
-                              짧은 리뷰<br>
-                              aljfal<br>
-                              afadfads<br>
-                            </p>
             
-                            <p class="long_review ">
-                              긴 리뷰
-                            </p>
-            
-                              <span class="review_more_btn" >더보기</span>
-                          </div>
-                          <div>
-                            <a href="#" class="btn-detail">
-                              <div class="restaurant-more-name">카페 이름</div>
-                              <div class="restaurant-more-text">더보기 ></div>
-                          </a>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="toplist_list">
-                        <div class="with-review">
-                          <div class="restaurant-item">
-                            <a href="#">
-                              <div class="thumb">
-                                <img class="center-croping lazy"
-                                     alt="사진 - 주소"
-                                     src="./image/list_photo_example.jpg"
-                                     width="260px" height="260px"
-                                  />
-                              </div>
-                            </a>
-                          </div>
-                          <div class="list-content">
-                            <div>
-                              <figure>
-                                <figcaption>
-                                  <div class="info">
-                                    <div class="wannago_wrap">
-                                      <button class="btn-type-icon favorite wannago_btn "
-                                      data-restaurant_uuid=""
-                                      data-action_id="">
-                                    </button>
-                                    <p class="wannago_txt">찜 </p>
-                                  </div>
-                                  <span class="title ">
-                                    <a href="#">
-                                      6.<h3> 카페 이름</h3>
-                                    </a>
-                                  </span>
-                                  <strong class="point  ">
-                                    <span>평점</span>
-                                  </strong>
-                                  <p class="etc ">주소</p>
-                                 
-                                </div>
-                              </figcaption>
-                            </figure>
-                            </div>
-                            <div class="review-content no-bottom">
-                              <figure class="user">
-                                <div class="thumb lazy"
-                                     data-original="#"
-                                     data-error="#">
-                                </div>
-                                <figcaption class="">
-                                  아이디
-                                </figcaption>
-                              </figure>
-                              <p class="short_review ">
-                                짧은 리뷰<br>
-                                aljfal<br>
-                                afadfads<br>
-                              </p>
-              
-                              <p class="long_review ">
-                                긴 리뷰
-                              </p>
-              
-                                <span class="review_more_btn" >더보기</span>
-                            </div>
-                            <div>
-                              <a href="#" class="btn-detail">
-                                <div class="restaurant-more-name">카페 이름</div>
-                                <div class="restaurant-more-text">더보기 ></div>
-                            </a>
-                            </div>
-                          </div>
-                        </li>
-                        <li class="toplist_list">
-                          <div class="with-review">
-                            <div class="restaurant-item">
-                              <a href="#">
-                                <div class="thumb">
-                                  <img class="center-croping lazy"
-                                       alt="사진 - 주소"
-                                       src="./image/list_photo_example.jpg"
-                                       width="260px" height="260px"
-                                    />
-                                </div>
-                              </a>
-                            </div>
-                            <div class="list-content">
-                              <div>
-                                <figure>
-                                  <figcaption>
-                                    <div class="info">
-                                      <div class="wannago_wrap">
-                                        <button class="btn-type-icon favorite wannago_btn "
-                                        data-restaurant_uuid=""
-                                        data-action_id="">
-                                      </button>
-                                      <p class="wannago_txt">찜 </p>
-                                    </div>
-                                    <span class="title ">
-                                      <a href="#">
-                                        7.<h3> 카페 이름</h3>
-                                      </a>
-                                    </span>
-                                    <strong class="point  ">
-                                      <span>평점</span>
-                                    </strong>
-                                    <p class="etc ">주소</p>
-                                   
-                                  </div>
-                                </figcaption>
-                              </figure>
-                              </div>
-                              <div class="review-content no-bottom">
-                                <figure class="user">
-                                  <div class="thumb lazy"
-                                       data-original="#"
-                                       data-error="#">
-                                  </div>
-                                  <figcaption class="">
-                                    아이디
-                                  </figcaption>
-                                </figure>
-                                <p class="short_review ">
-                                  짧은 리뷰<br>
-                                  aljfal<br>
-                                  afadfads<br>
-                                </p>
-                
-                                <p class="long_review ">
-                                  긴 리뷰
-                                </p>
-                
-                                  <span class="review_more_btn" >더보기</span>
-                              </div>
-                              <div>
-                                <a href="#" class="btn-detail">
-                                  <div class="restaurant-more-name">카페 이름</div>
-                                  <div class="restaurant-more-text">더보기 ></div>
-                              </a>
-                              </div>
-                            </div>
-                          </li>
-                          <li class="toplist_list">
-                            <div class="with-review">
-                              <div class="restaurant-item">
-                                <a href="#">
-                                  <div class="thumb">
-                                    <img class="center-croping lazy"
-                                         alt="사진 - 주소"
-                                         src="./image/list_photo_example.jpg"
-                                         width="260px" height="260px"
-                                      />
-                                  </div>
-                                </a>
-                              </div>
-                              <div class="list-content">
-                                <div>
-                                  <figure>
-                                    <figcaption>
-                                      <div class="info">
-                                        <div class="wannago_wrap">
-                                          <button class="btn-type-icon favorite wannago_btn "
-                                          data-restaurant_uuid=""
-                                          data-action_id="">
-                                        </button>
-                                        <p class="wannago_txt">찜 </p>
-                                      </div>
-                                      <span class="title ">
-                                        <a href="#">
-                                          8.<h3> 카페 이름</h3>
-                                        </a>
-                                      </span>
-                                      <strong class="point  ">
-                                        <span>평점</span>
-                                      </strong>
-                                      <p class="etc ">주소</p>
-                                     
-                                    </div>
-                                  </figcaption>
-                                </figure>
-                                </div>
-                                <div class="review-content no-bottom">
-                                  <figure class="user">
-                                    <div class="thumb lazy"
-                                         data-original="#"
-                                         data-error="#">
-                                    </div>
-                                    <figcaption class="">
-                                      아이디
-                                    </figcaption>
-                                  </figure>
-                                  <p class="short_review ">
-                                    짧은 리뷰<br>
-                                    aljfal<br>
-                                    afadfads<br>
-                                  </p>
-                  
-                                  <p class="long_review ">
-                                    긴 리뷰
-                                  </p>
-                  
-                                    <span class="review_more_btn" >더보기</span>
-                                </div>
-                                <div>
-                                  <a href="#" class="btn-detail">
-                                    <div class="restaurant-more-name">카페 이름</div>
-                                    <div class="restaurant-more-text">더보기 ></div>
-                                </a>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="toplist_list">
-                              <div class="with-review">
-                                <div class="restaurant-item">
-                                  <a href="#">
-                                    <div class="thumb">
-                                      <img class="center-croping lazy"
-                                           alt="사진 - 주소"
-                                           src="./image/list_photo_example.jpg"
-                                           width="260px" height="260px"
-                                        />
-                                    </div>
-                                  </a>
-                                </div>
-                                <div class="list-content">
-                                  <div>
-                                    <figure>
-                                      <figcaption>
-                                        <div class="info">
-                                          <div class="wannago_wrap">
-                                            <button class="btn-type-icon favorite wannago_btn "
-                                            data-restaurant_uuid=""
-                                            data-action_id="">
-                                          </button>
-                                          <p class="wannago_txt">찜 </p>
-                                        </div>
-                                        <span class="title ">
-                                          <a href="#">
-                                            9.<h3> 카페 이름</h3>
-                                          </a>
-                                        </span>
-                                        <strong class="point  ">
-                                          <span>평점</span>
-                                        </strong>
-                                        <p class="etc ">주소</p>
-                                       
-                                      </div>
-                                    </figcaption>
-                                  </figure>
-                                  </div>
-                                  <div class="review-content no-bottom">
-                                    <figure class="user">
-                                      <div class="thumb lazy"
-                                           data-original="#"
-                                           data-error="#">
-                                      </div>
-                                      <figcaption class="">
-                                        아이디
-                                      </figcaption>
-                                    </figure>
-                                    <p class="short_review ">
-                                      짧은 리뷰<br>
-                                      aljfal<br>
-                                      afadfads<br>
-                                    </p>
-                    
-                                    <p class="long_review ">
-                                      긴 리뷰
-                                    </p>
-                    
-                                      <span class="review_more_btn" >더보기</span>
-                                  </div>
-                                  <div>
-                                    <a href="#" class="btn-detail">
-                                      <div class="restaurant-more-name">카페 이름</div>
-                                      <div class="restaurant-more-text">더보기 ></div>
-                                  </a>
-                                  </div>
-                                </div>
-                              </li>
-                              <li class="toplist_list">
-                                <div class="with-review">
-                                  <div class="restaurant-item">
-                                    <a href="#">
-                                      <div class="thumb">
-                                        <img class="center-croping lazy"
-                                             alt="사진 - 주소"
-                                             src="./image/list_photo_example.jpg"
-                                             width="260px" height="260px"
-                                          />
-                                      </div>
-                                    </a>
-                                  </div>
-                                  <div class="list-content">
-                                    <div>
-                                      <figure>
-                                        <figcaption>
-                                          <div class="info">
-                                            <div class="wannago_wrap">
-                                              <button class="btn-type-icon favorite wannago_btn "
-                                              data-restaurant_uuid=""
-                                              data-action_id="">
-                                            </button>
-                                            <p class="wannago_txt">찜 </p>
-                                          </div>
-                                          <span class="title ">
-                                            <a href="#">
-                                              10.<h3> 카페 이름</h3>
-                                            </a>
-                                          </span>
-                                          <strong class="point  ">
-                                            <span>평점</span>
-                                          </strong>
-                                          <p class="etc ">주소</p>
-                                         
-                                        </div>
-                                      </figcaption>
-                                    </figure>
-                                    </div>
-                                    <div class="review-content no-bottom">
-                                      <figure class="user">
-                                        <div class="thumb lazy"
-                                             data-original="#"
-                                             data-error="#">
-                                        </div>
-                                        <figcaption class="">
-                                          아이디
-                                        </figcaption>
-                                      </figure>
-                                      <p class="short_review ">
-                                        짧은 리뷰<br>
-                                        aljfal<br>
-                                        afadfads<br>
-                                      </p>
-                      
-                                      <p class="long_review ">
-                                        긴 리뷰
-                                      </p>
-                      
-                                        <span class="review_more_btn" >더보기</span>
-                                    </div>
-                                    <div>
-                                      <a href="#" class="btn-detail">
-                                        <div class="restaurant-more-name">카페 이름</div>
-                                        <div class="restaurant-more-text">더보기 ></div>
-                                    </a>
-                                    </div>
-                                  </div>
-                                </li>
-                                                  
+                                          
           </ul>
+          </c:forEach> 
 
-          <div class="more_btn_wrapper" role="button">
-              더보기
+      <div class="pull-right" >
+	<ul class="pagination">
+            <c:if test="${pageMaker.prev}">
+            <li class="paginate_button">  
+            <a href="${pageMaker.startPage -1 }">Previous</a></li>
+              </c:if>
+        
+        <c:forEach var="num" begin="${pageMaker.startPage}"
+        end="${pageMaker.endPage }">
+        <li class='paginate_button ${pageMaker.cri.pageNum == num ? "active":"" }'>
+						 <a href="${num}">${num}</a></li>
+            </c:forEach>
             
-          </div>
+            
+           
+             <c:if test="${pageMaker.next}">
+              <li class="paginate_button">
+               <a href="${pageMaker.endPage +1 }">Next</a></li>
+              </c:if>	
+              </ul>	
+       </div>	
+    
+			<form id='actionform' action="/curfing/popular" method="get">
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+			
+			
+			
+			
+			</form>
+          
         </section>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+ var actionform = $("#actionform");
+
+
+ console.log('actionform...' + actionform);
+ 	  
+ $(".paginate_button a").on("click", function(e){
+ 	  
+ 	  console.log('Click...');
+ 	  e.preventDefault();
+ 	  actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+ 	  actionForm.submit();
+ 	  
+ });
+ 
+ </script>    
 
         
 <footer class="footer">
@@ -1214,7 +674,7 @@
     <div class="bottom">
       <!-- 아이콘 -->
       <div class="icon">
-         <ul>
+        <ul>
           <li>
             <a href="#"><img src="/resources/image/icon_home.png"></a>
             <br />
