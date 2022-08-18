@@ -4,6 +4,13 @@
 <html lang="ko">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
+%>
+
 <link href="${path}/resources/css/basic.css" rel="stylesheet"/> 	
 <head>
   <meta charset="UTF-8">
@@ -413,6 +420,32 @@
       text-align: left;
       padding: 10px;
     }
+      .pull-right{
+      margin-left: 660px;
+      width: 980px;
+      height: 30px;
+    }
+  .paginate_button{
+    width: 25px;
+    height: 20px;
+    border-radius: 5px;
+    list-style-type:none;
+    float: left;
+   
+    margin: 1px;
+    background-color: rgb(233, 159, 159);
+     text-align: center;
+  }
+  .paginate_button:hover{
+    background-color: grey;
+  }
+  .paginate_button>a{
+    width: 25px;
+    height: 20px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+     
+  }
   </style>
 
   <!-- 돋보기-->
@@ -488,11 +521,9 @@
     <header class="basic-info-list">
       <div class="inner" style="padding-bottom: 10px">
         <p class="status">
-          <span>
-            클릭수 <!-- 현재 클릭수로 변경 -->
-          </span> |
+     
           <time datetime=""> <!-- 현재 날짜로 변경 -->
-            날짜
+             <%= sf.format(nowTime) %> 
           </time>
         </p>
 
@@ -514,7 +545,7 @@
             <li class="toplist_list">
               <div class="with-review">
                 <div class="restaurant-item">
-                  <a href="content.html">
+                  <a href="/curfing/content">
                     <div class="thumb">
                       <img class="center-croping lazy"
                            alt="사진 - 주소"
@@ -538,14 +569,14 @@
                           <p class="wannago_txt">찜 </p>
                         </div>
                         <span class="title ">
-                         	<c:out value="${curfing.rno}">s</c:out>
-                            <h3><c:out value="${curfing.cafaname}"/></h3>
+                         	<c:out value="${curfing.bno}"></c:out>
+                            <h3><c:out value="${curfing.cafename}"/></h3>
                           
                         </span>
                         <strong class="point ">
                           <span>평점</span>
                         </strong>
-                        <p class="etc "><c:out value="${curfing.address}"/></p>
+                        <p class="etc ">주소:<c:out value="${curfing.address}"/> </p>
                        
                       </div>
                     </figcaption>
@@ -558,20 +589,21 @@
                            data-error="#">
                       </div>
                       <figcaption class="">
-                        ID :<c:out value="${curfing.cafeid}"/>
+                        ID :
                       </figcaption>
                     </figure>
                     <p class="short_review ">
                       짧은 리뷰<br>
                       aljfal<br>
                       afadfads<br>
+                      	  클릭수 <!-- 현재 클릭수로 변경 -->
                     </p>
-    
-                    <p class="long_review ">
-                      긴 리뷰
-                    </p>
+                    
+          	
+     
     
                       <span class="review_more_btn" >더보기</span>
+                       
                   </div>
                   <div>
                     <a href="content.html" class="btn-detail">
@@ -587,11 +619,54 @@
           </ul>
           </c:forEach> 
 
-          <div class="more_btn_wrapper" role="button">
-              더보기
+      <div class="pull-right" >
+	<ul class="pagination">
+            <c:if test="${pageMaker.prev}">
+            <li class="paginate_button">  
+            <a href="${pageMaker.startPage -1 }">Previous</a></li>
+              </c:if>
+        
+        <c:forEach var="num" begin="${pageMaker.startPage}"
+        end="${pageMaker.endPage }">
+        <li class='paginate_button ${pageMaker.cri.pageNum == num ? "active":"" }'>
+						 <a href="${num}">${num}</a></li>
+            </c:forEach>
             
-          </div>
+            
+           
+             <c:if test="${pageMaker.next}">
+              <li class="paginate_button">
+               <a href="${pageMaker.endPage +1 }">Next</a></li>
+              </c:if>	
+              </ul>	
+       </div>	
+    
+			<form id='actionform' action="/curfing/popular" method="get">
+			<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+			<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+			
+			
+			
+			
+			</form>
+          
         </section>
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+ var actionform = $("#actionform");
+
+
+ console.log('actionform...' + actionform);
+ 	  
+ $(".paginate_button a").on("click", function(e){
+ 	  
+ 	  console.log('Click...');
+ 	  e.preventDefault();
+ 	  actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+ 	  actionForm.submit();
+ 	  
+ });
+ 
+ </script>    
 
         
 <footer class="footer">
