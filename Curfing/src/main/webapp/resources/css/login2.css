@@ -1,0 +1,118 @@
+@charset "UTF-8";
+    /* header */
+    /* 로그인, 회원가입, 마이페이지, 고객센터 */
+    .topNav>ul{
+      text-align: right;
+      padding-top: 5px;
+    }
+    .topNav li{
+      display: inline-block;
+      margin-left: 2px;
+    }
+    .topNav li>a{
+      display: inline-block;
+      padding: 5px 5px;
+     background-color: rgb(233, 159, 159);
+     border-radius: 8px;
+     color: azure;
+    }
+    .topNav li>a:hover{
+      color: azure;
+      background-color: #C3E2DD;
+    }
+    /* 로고 */
+    .logo{
+      text-align: center;
+      font-size: 50pt;
+      margin-bottom: 5px;
+    }
+    .logo img{
+      width: 100px;
+      height: 100px;
+    }
+    .logo>a{
+      color: rgb(233, 159, 159);
+    }
+    /* section */
+    .login{
+      padding-top: 50px;
+    }
+    .login>h2{
+      color: rgb(233, 159, 159);
+      padding-bottom: 5px;
+    }
+    .login_box{
+      color: cadetblue;
+      border-top: 3px solid rgb(233, 159, 159);
+      padding: 10px;
+      overflow: hidden;
+    }
+      .member_login{
+      display: flex;
+ 	  justify-content: center;
+  	  align-items: center;
+  	  padding: 30px;
+  	  margin-top: 80px;
+  	  margin-bottom: 80px;
+    }
+    .id_input{
+      width: 410px;
+      height: 40px;
+      margin-top: 10px;
+      
+    }
+    .pw_input{
+      width: 410px;
+      height: 40px;
+      margin-top: 10px;
+    }
+    .jurirno_input{
+      width: 410px;
+      height: 40px;
+      margin-top: 10px;
+    }
+    .login_btn{
+      width: 414px;
+      height: 40px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 15pt;
+      color: white;
+      background-color: rgb(233, 159, 159);
+      border: none;
+    }
+    .login_btn>a:hover{
+      color: rgb(233, 159, 159);
+      background-color: azure;
+    }
+
+    /* footer */
+    .bottom{
+      border-top: 3px solid rgb(233, 159, 159);
+      border-bottom: 3px solid rgb(233, 159, 159);
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .icon li{
+      display: inline-block;
+      text-align: center;
+    }
+    .info{
+      padding-top: 30px;
+    }
+    .info li{
+      display: inline-block;
+      text-align: start;
+    }
+    .copyright{
+      text-align: left;
+      padding: 10px;
+    }
+    
+    /*로그인 실패시 경고 */
+    .login_warn{
+      margin-top: 30px;
+      text-align: center;
+      color : red;
+    }
