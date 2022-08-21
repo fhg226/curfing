@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.curfing.domain.BoardVO;
+import com.curfing.domain.HashtagVO;
+import com.curfing.domain.MemberVO;
+import com.curfing.domain.MenuVO;
 import com.curfing.domain.ReviewVO;
 import com.curfing.domain.UserVO;
 import com.curfing.mapper.BoardMapper;
@@ -20,7 +23,7 @@ public class BoardServiceImpl implements BoardService {
 	private final BoardMapper mapper;
 	
 	@Override
-	public long register(BoardVO board) {
+	public int register(BoardVO board) {
 
 		log.info("register----" + board);
 		mapper.insert(board);
@@ -60,14 +63,14 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public UserVO getUser(long uno) {
+	public UserVO getUser(String userid) {
 		log.info("getUser....");
 		
-		return mapper.getUser(uno);
+		return mapper.getUser(userid);
 	}
 
 	@Override
-	public long regReview(ReviewVO review) {
+	public int regReview(ReviewVO review) {
 		log.info("review....." + review);
 		
 		mapper.insertReview(review);
@@ -75,4 +78,43 @@ public class BoardServiceImpl implements BoardService {
 		return review.getBno();
 	}
 
+	@Override
+	public List<ReviewVO> getReviewList(long bno) {
+		
+		log.info("getReview......");
+		
+		return mapper.getReviewList(bno);
+	}
+
+	@Override
+	public List<ReviewVO> getListWithReview() {
+		log.info("getListWithReview...");
+		
+		return mapper.getListWithReview();
+	}
+	
+	@Override
+	public MemberVO getMember(String memberid) {
+		log.info("getMember....");
+		
+		return mapper.getMember(memberid);
+	}
+	
+	@Override
+	public int regMenu(MenuVO menu) {
+		log.info("regMenu....." + menu);
+		
+		mapper.insertMenu(menu);
+		
+		return menu.getBno();
+	}
+	
+	@Override
+	public int regHashtag(HashtagVO hashtag) {
+		log.info("regHashtag....." + hashtag);
+		
+		mapper.insertHashtag(hashtag);
+		
+		return hashtag.getBno();
+	}
 }

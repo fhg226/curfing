@@ -7,31 +7,54 @@
 
 	<select id="getList" resultType="com.curfing.domain.BoardVO">
 		<![CDATA[
-		select * from content where bno > 0
+		select * from cafe_r where bno > 0
 		]]>
 	</select>
 	
+	<select id="getListWithReview" resultType="com.curfing.domain.ReviewVO">
+		select * from(
+			select review.* from review inner join cafe_r on review.bno = cafe_r.bno where cafe_r.bno=1 order by review.rno desc 
+		)
+		where rownum =1
+	</select>
+	
 	<select id="getUser" resultType="com.curfing.domain.UserVO">
-		select * from user_t where uno = #{uno}
+		select * from user_t where userid = #{userid}
+	</select>
+
+	<select id="getMember" resultType="com.curfing.domain.MemberVO">
+		select * from member_t where memberid = #{memberid}
 	</select>
 
 	<insert id="insert">
-		insert into content(bno, name, address, phone, foodType, price, parking, salesTime, holiday, site, menu) values(c_seq.nextval, #{name}, #{address}, #{phone}, #{foodType}, #{price}, #{parking}, #{salesTime}, #{holiday}, #{site}, #{menu})
+		insert into cafe_r(bno, memberid, cafename, address, phone, cafeinfo, price, car, opentime, closetime, dayoff, site) values(seq_cafe.nextval, #{memberid}, #{cafename}, #{address}, #{phone}, #{cafeinfo}, #{price}, #{car}, #{opentime}, #{closetime}, #{dayoff}, #{site})
 	</insert>
 	
 	<delete id="delete">
-		delete content where bno = #{bno}
+		delete cafe_r where bno = #{bno}
 	</delete>
 	
 	<update id="update">
-		update content set name=#{name}, address=#{address}, phone=#{phone}, foodType=#{foodType}, price=#{price}, parking=#{parking}, salesTime=#{salesTime}, holiday=#{holiday}, site=#{site}, menu=#{menu}, regDate=sysdate where bno=#{bno}
+		update cafe_r set cafename=#{cafename}, address=#{address}, phone=#{phone}, cafeinfo=#{cafeinfo}, price=#{price}, car=#{parking}, opentime=#{opentime}, closetime=#{closetime}, dayoff=#{dayoff}, site=#{site}, menu=#{menu}, regDate=sysdate where bno=#{bno}
 	</update>
 	
 	<select id="read" resultType="com.curfing.domain.BoardVO">
-		select * from content where bno = #{bno}
+		select * from cafe_r where bno = #{bno}
 	</select>
 	
 	<insert id="insertReview">
-		insert into review(rno, uno, bno, replygrade, reply, replydate, updatedate) values(seq_review.nextval(), #{uno}, #{bno}, #{replygrade}, #{reply}, #{replydate}, #{updatedate})
+		insert into review(rno, userid, bno, replygrade, reply) values(seq_review.nextval, #{userid}, #{bno}, #{replygrade}, #{reply})
 	</insert>
+	
+	<insert id="insertMenu">
+		insert into menu(menuno, bno, menun1) values(seq_menu.nextval, #{bno}, #{menun1})
+	</insert>
+	
+	<insert id="insertHashtag">
+		insert into hashtag_t(hno, hashtagname, bno) values(seq_hashtag.nextval, #{hashtagname}, #{bno})
+	</insert>
+	<select id="getReviewList" resultType="com.curfing.domain.ReviewVO">
+		select * from review where bno = #{bno}
+	</select>
+	
 </mapper>

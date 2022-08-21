@@ -164,7 +164,9 @@ h3 {
 	padding-left: 15px;
 }
 
-.username{
+.userid
+
+{
 	width: 200px;
 	height: 10px;
 }
@@ -275,7 +277,7 @@ h3 {
 		<!-- 리뷰 등록 부분 -->
 		<form
 			action="/board/review"
-			method="post" name="review">
+			method="post" name="review" id="review">
 
 			<div class="join_input">
 			<div class="star-rating">
@@ -291,14 +293,13 @@ h3 {
   <label for="1-star" class="star">&#9733;</label>
 </div>
 			
-		<input type="hidden" name="uno" value='<c:out value="${user.uno }" />'><br>
-		ID : <input type="text" class="username" name="username" value='<c:out value="${user.username }" />' readonly>
-
+		<input type="hidden" id="bno" name="bno" value='<c:out value="${content.bno }" />'><br>
+		ID : <input type="text" class="userid" id="userid" name="userid" value='<c:out value="${user.userid }" />' readonly>
 			
 			</div>
 			
 			<div class="review_box">
-				<textarea class="reply" id="reply"></textarea>
+				<textarea class="reply" name="reply" id="reply"></textarea>
 			</div>
 			
 	<br> <br>		
@@ -310,9 +311,14 @@ h3 {
 	<script>
           
           function test(){
-        alert("등록되었습니다."  );
+        	  {
+        		  
+			        alert("등록되었습니다."  );
+        	  }
      
        }
+          
+         
     </script>
     
 

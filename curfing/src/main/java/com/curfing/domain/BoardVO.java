@@ -7,19 +7,23 @@ import lombok.Data;
 @Data
 public class BoardVO {
 
-	private long bno;
-	private String name;
+	private int bno;
+	private String memberid;
+	private String cafename;
 	private String address;
 	private String phone;
-	private String foodType;
+	private String cafeinfo;
 	private long price;
-	private String parking;
-	private String salesTime;
-	private String holiday;
+	private String car;
+	private String opentime;
+	private String closetime;
+	private String dayoff;
 	private String site;
 	private String menu;
 	private String picture;
 	private Date regDate;
+	private Date updateDate;
+	private int upcount;
 	
 }
   

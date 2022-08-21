@@ -30,14 +30,14 @@ public class BoardMapperTests {
 	public void testInsert() {
 		
 		BoardVO board = new BoardVO();
-		board.setName("카페 테스트01");
+		board.setCafename("카페 테스트01");
 		board.setAddress("주소 테스트01");
 		board.setPhone("phoneTest01");
-		board.setFoodType("test01");
+		board.setCafeinfo("test01");
 		board.setPrice(1234);
-		board.setParking("가능");
-		board.setSalesTime("1~2");
-		board.setHoliday("몇요일");
+		board.setCar("가능");
+		board.setOpentime("1~2");
+		board.setDayoff("몇요일");
 		board.setSite("www.cafeTest.com");
 		board.setMenu("메뉴 테스트");
 		
@@ -59,15 +59,15 @@ public class BoardMapperTests {
 	public void testUpdate() {
 		
 		BoardVO board = new BoardVO();
-		board.setBno(3L);
-		board.setName("카페 테스트01");
+		board.setBno(3);
+		board.setCafename("카페 테스트01");
 		board.setAddress("주소 수정");
 		board.setPhone("phoneTest02");
-		board.setFoodType("test02");
+		board.setCafeinfo("test02");
 		board.setPrice(4321);
-		board.setParking("불가능");
-		board.setSalesTime("시간 수정");
-		board.setHoliday("요일 수정");
+		board.setCar("불가능");
+		board.setOpentime("시간 수정");
+		board.setDayoff("요일 수정");
 		board.setSite("홈페이지 수정");
 		board.setMenu("메뉴 수정");
 		

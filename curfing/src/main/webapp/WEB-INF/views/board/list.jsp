@@ -527,7 +527,7 @@
                         <span class="title ">
                         <a class="move" href='<c:out value="${list.bno }" />'>
                          	<c:out value="${list.bno}"  ></c:out>
-                            <h3><c:out value="${list.name}"/></h3>
+                            <h3><c:out value="${list.cafename}"/></h3>
                         </a>
                         </span>
                         <strong class="point ">
@@ -540,31 +540,30 @@
                   </figure>
                   </div>
                   <div class="review-content no-bottom">
+                  리뷰<br>
+                  <c:forEach items="${listWithReview}" var="listWithReview">
                     <figure class="user">
                       <div class="thumb lazy"
                            data-original="#"
                            data-error="#">
                       </div>
                       <figcaption class="">
-                        ID :
-                        <%-- <c:out value="${curfing.cafeid}"/> --%>
+                        ID : <c:out value="${listWithReview.userid }" />
                       </figcaption>
                     </figure>
                     <p class="short_review ">
-                      짧은 리뷰<br>
-                      aljfal<br>
-                      afadfads<br>
+                      <c:out value="${listWithReview.reply }" /><br>
                     </p>
     
                     <p class="long_review ">
                       긴 리뷰
                     </p>
-    
+    				</c:forEach>
                       <span class="review_more_btn" >더보기</span>
                   </div>
                   <div>
                     <a href='<c:out value="${list.bno }" />' class="btn-detail">
-                      <div class="restaurant-more-name"><c:out value="${list.name }"></c:out></div>
+                      <div class="restaurant-more-name"><c:out value="${list.cafename }"></c:out></div>
                       <div class="restaurant-more-text">더보기 ></div>
                   </a>
                   </div>

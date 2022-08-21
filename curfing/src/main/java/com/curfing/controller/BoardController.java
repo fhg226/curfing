@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.curfing.domain.BoardVO;
+import com.curfing.domain.HashtagVO;
+import com.curfing.domain.MemberVO;
+import com.curfing.domain.MenuVO;
 import com.curfing.domain.ReviewVO;
 import com.curfing.service.BoardService;
 
@@ -28,21 +31,25 @@ public class BoardController {
 		
 		log.info("list......");
 		model.addAttribute("list", service.getList());
+		model.addAttribute("listWithReview", service.getListWithReview());
 		
 	}
 	
 	@GetMapping("/register")
-	public void register() {
+	public void register(@RequestParam("memberid") String memberid, Model model) {
 		
 		log.info("register......");
 		
+		model.addAttribute("member", service.getMember(memberid));
 	}
 	
 	@PostMapping("/register")
-	public String register(BoardVO board, RedirectAttributes rttr) {
+	public String register(BoardVO board, MenuVO menu, HashtagVO hashtag, RedirectAttributes rttr) {
 		log.info("register......" + board);
 		
 		long bno = service.register(board);
+		service.regMenu(menu);
+		service.regHashtag(hashtag);
 		log.info("BNO ======> " + bno);
 		
 		rttr.addFlashAttribute("result", board.getBno());
@@ -54,13 +61,15 @@ public class BoardController {
 	public void content(@RequestParam("bno") long bno, Model model) {
 		log.info("content......");
 		model.addAttribute("content", service.get(bno));
+		model.addAttribute("reviewList", service.getReviewList(bno));
+		
 	}
 
 	@GetMapping("/review")
-	public void review(@RequestParam("bno") long bno, @RequestParam("uno") long uno, Model model1, Model model2) {
+	public void review(@RequestParam("bno") long bno, @RequestParam("userid") String userid, Model model) {
 		log.info("review......");
-		model1.addAttribute("content", service.get(bno));
-		model2.addAttribute("user", service.getUser(uno));
+		model.addAttribute("content", service.get(bno));
+		model.addAttribute("user", service.getUser(userid));
 		
 	}
 	

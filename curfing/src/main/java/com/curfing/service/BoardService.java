@@ -3,12 +3,15 @@ package com.curfing.service;
 import java.util.List;
 
 import com.curfing.domain.BoardVO;
+import com.curfing.domain.HashtagVO;
+import com.curfing.domain.MemberVO;
+import com.curfing.domain.MenuVO;
 import com.curfing.domain.ReviewVO;
 import com.curfing.domain.UserVO;
 
 public interface BoardService {
 
-	public long register(BoardVO board);
+	public int register(BoardVO board);
 	
 	public BoardVO get(long bno);
 	
@@ -18,9 +21,17 @@ public interface BoardService {
 	
 	public boolean remove(long bno);
 
-	public long regReview(ReviewVO review);
+	public int regReview(ReviewVO review);
 
-	public UserVO getUser(long uno);
+	public UserVO getUser(String userid);
 	
-	
+	public List<ReviewVO> getReviewList(long bno);
+
+	public List<ReviewVO> getListWithReview();
+
+	public MemberVO getMember(String memberid);
+
+	public int regMenu(MenuVO menu);
+
+	public int regHashtag(HashtagVO hashtag);
 }

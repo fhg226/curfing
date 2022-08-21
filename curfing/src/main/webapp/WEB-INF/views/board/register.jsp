@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!-- saved from url=(0061)file:///C:/Users/user/Desktop/project-curfing/listupdate.html -->
 <html lang="ko">
@@ -154,8 +154,9 @@ h3 {
 
 .join_input {
 	width: 400px;
-	height: 400px;
 	display: inline-block;
+	float: left;
+	padding-top: 100px;
 	margin-right: 40px;
 }
 
@@ -163,6 +164,11 @@ h3 {
 	text-align: left;
 	padding-left: 15px;
 }
+
+#input-image{
+	width: 365px;
+}
+
 
 .text_mv {
 	display: inline-block;
@@ -206,7 +212,6 @@ h3 {
 
 .image-container {
 	width: 400px;
-	height: 400px;
 	margin-bottom: 50px;
 }
 
@@ -261,7 +266,8 @@ h3 {
 				<div class="image-container">
 
 					<img class="image_size" style="width: 400px;" id="preview-image"
-						src="./작성_files/000000.png&amp;text=preview+image"> <input
+						src="./작성_files/000000.png&amp;text=preview+image">
+						 <input
 						type="file" id="input-image">
 
 
@@ -298,8 +304,9 @@ h3 {
 
 			<!--내용 제목 오른쪽 -->
 			<div class="text_mv">
-
+				<input type="hidden" class="memberid" name="memberid" value='<c:out value="${member.memberid }" />' >
 				<table>
+				
 					<tr>
 						<td colspan="2">
 							<h3>카페 정보</h3>
@@ -307,7 +314,7 @@ h3 {
 					</tr>
 					<tr>
 						<td>카페 이름</td>
-						<td><input class="name" type="text" name="name" required><br>
+						<td><input class="cafename" type="text" name="cafename" required><br>
 						</td>
 					</tr>
 					<tr>
@@ -322,7 +329,7 @@ h3 {
 					</tr>
 					<tr>
 						<td>음식 종류</td>
-						<td><input class="foodType" type="text" name="foodType" ><br>
+						<td><input class="cafeinfo" type="text" name="cafeinfo" placeholder="카페/디저트"><br>
 						</td>
 					</tr>
 					<tr>
@@ -332,18 +339,21 @@ h3 {
 					<tr>
 						<td>주차</td>
 						<td>
-						<input class="parking" type="text" name="parking" ><br>
+						<input class="car" type="text" name="car" placeholder="가능 or 불가능"><br>
 
 						</td>
 					</tr>
 					<tr>
 						<td>영업 시간</td>
-						<td><input class="salesTime" type="text" name="salesTime"
-							required><br></td>
+						<td>
+							<input class="opentime" type="text" name="opentime" style="width: 109px" required>
+							&nbsp;&nbsp;~&nbsp;&nbsp;
+							<input class="closetime" type="text" name="closetime" style="width: 109px" required><br>
+						</td>
 					</tr>
 					<tr>
 						<td>휴일</td>
-						<td><input class="holiday" type="text" name="holiday" required><br>
+						<td><input class="dayoff" type="text" name="dayoff" required><br>
 
 						</td>
 					</tr>
@@ -355,11 +365,17 @@ h3 {
 					</tr>
 					<tr>
 						<td>메뉴</td>
-						<td><input class="menu" type="text" name="menu" ><br>
+						<td><input class="menun1" type="text" name="menun1" ><br>
 
 						</td>
 					</tr>
+					<tr>
+						<td>태그</td>
+						<td>
+							<input class="hashtagname" type="text" name="hashtagname" placeholder="#태그" ><br>
 
+						</td>
+					</tr>
 				</table>
 			</div>
 			<!--내용 제목 오른쪽 끝 -->

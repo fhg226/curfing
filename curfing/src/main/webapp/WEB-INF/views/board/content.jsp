@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -884,7 +885,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="resources/cafephoto/커피.jpg"
+                       src="${path }/resources/cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -904,7 +905,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="resources/cafephoto/커피.jpg"
+                       src="./cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -924,7 +925,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="resources/cafephoto/커피.jpg"
+                       src="./cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -944,7 +945,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="resources/cafephoto/커피.jpg"
+                       src="./cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -964,7 +965,7 @@ img {
                   <figure class="cafe-photos-item" 
                     role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
                     <img class="center-croping"
-                       src="resources/cafephoto/커피.jpg"
+                       src="./cafephoto/커피.jpg"
                       alt="카페 사진 - 주소"
                       width="200px"
                       height="200px"/>
@@ -1004,7 +1005,7 @@ img {
             <header>
               <div class="cafe_title_wrap">
                 <span class="title">
-                  <h1 class="cafe_name"><c:out value="${content.name }" /></h1>
+                  <h1 class="cafe_name"><c:out value="${content.cafename }" /></h1>
                     <strong class="rate-point ">
                       <span>평점</span>
                     </strong>
@@ -1062,7 +1063,7 @@ img {
                 <tr>
                   <th>음식 종류</th>
                   <td>
-                    <span><c:out value="${content.foodType }" /></span>
+                    <span><c:out value="${content.cafeinfo }" /></span>
                   </td>
                 </tr>
 
@@ -1073,19 +1074,19 @@ img {
 
                 <tr>
                   <th>주차</th>
-                  <td><c:out value="${content.parking }" /> </td>
+                  <td><c:out value="${content.car }" /> </td>
                 </tr>
 
                 <tr>
                   <th>영업시간</th>
-                  <td><c:out value="${content.salesTime }" /></td>
+                  <td><c:out value="${content.opentime }" /> ~ <c:out value="${content.closetime }" /></td>
                 </tr>
 
 
 
                 <tr>
                   <th>휴일</th>
-                  <td><c:out value="${content.holiday }" /></td>
+                  <td><c:out value="${content.dayoff }" /></td>
                 </tr>
 
                 <tr>
@@ -1200,7 +1201,15 @@ img {
               <span class="cafeReviewList__EmptyTitle">아직 작성된 리뷰가 없네요.</span>
               <span class="cafeReviewList__EmptyDescription">앱에서 해당 식당의 첫 리뷰를 작성해주시겠어요?</span>
             </div>
-
+			
+			<c:forEach items="${reviewList}" var="reviewList">
+			
+			<div>
+			  <span><c:out value="${reviewList.userid }" /></span><br>
+			  <span><c:out value="${reviewList.replygrade }" /></span>
+			  <span><c:out value="${reviewList.reply }" /></span>
+			</div>
+			</c:forEach>
             <div class="cafeReviewList__MoreReviewButton cafeReviewList__MoreReviewButton--Hide" role="button">
               더보기
             </div>
@@ -1217,10 +1226,10 @@ img {
           <div class="inner">
             <!-- 관련 태그 -->
               <section class="module related-tags only-desktop">
-                <span class="title">이 카페 관련 태그</span>
+                <span class="title"><c:out value="${content.cafename }" /> 관련 태그</span>
 
                 <p>
-                    <a href="#" class="tag-item">태그</a>
+                    <a href="#" class="tag-item"><c:out value="${hashtag_t.hashtagname }" /></a>
                     <a href="#" class="tag-item">태그</a>
                     <a href="#" class="tag-item">태그</a>
                     <a href="#" class="tag-item">태그</a>
