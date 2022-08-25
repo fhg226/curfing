@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <!DOCTYPE html>
+    pageEncoding="UTF-8"%>  
 <html lang="ko">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -123,6 +122,13 @@
       margin-inline-end: 0px;
     }
 
+	.hidden {
+	padding-top: 10px;
+	text-align: right;
+	font-size: 10px;
+	color: grey;
+	}
+
     .pg-toplist .basic-info-list .title {
       margin-top: 11px;
       font-size: 1.625rem;
@@ -143,6 +149,7 @@
     margin-top: 5px;
   }
 
+	
   .list-restaurants {
     overflow: hidden;
   }
@@ -177,6 +184,9 @@
   }
 
   .list-restaurants.type-single-big>li .with-review {
+  	display: flex;
+  	justify-content: space-around;
+  	align-items: flex-start;
     position: relative;
   }
 
@@ -198,14 +208,13 @@
   .list-content{
     display: inline-block;
     width: 635px;
-    
+    height: 260px;
     padding-left: 10px;
   }
 
-   .restaurant-item .info {
+   .list-content .infomation {
     position: relative;
     text-decoration: none;
-    
   }
   
   .pg-toplist .container-list .wannago_wrap {
@@ -248,7 +257,7 @@
     margin-top: 6px;
   }
 
-  .restaurant-item .info .title {
+  .list-content .infomation .title {
     display: inline-block;
     overflow: hidden;
     max-width: 64%;
@@ -260,14 +269,14 @@
     white-space: nowrap;
   }
 
-  .restaurant-item .info .point {
+  .list-content .infomation .point {
     display: inline-block;
     font-size: 1.375rem;
     color: #ff792a;
     vertical-align: middle;
     line-height: 1em;
   }
-
+  
   .type-single-big .review-content {
     display: block;
     position: relative;
@@ -275,11 +284,6 @@
     padding-left: 40px;
     height: auto;
     min-height: 40px;
-  }
-
-  .list-restaurants .review-content {
-    font-size: 0.875rem;
-    line-height: 21px;
   }
 
   .type-single-big .review-content .user {
@@ -312,15 +316,48 @@
     overflow: hidden;
     margin-top: 8px;
     padding-left: 52px;
-    height: 150px;
+    height: 180px;
     font-size: 0.875rem;
     line-height: 21px;
     color: #333;
   }
 
-  .pg-toplist .container-list .long_review {
-    display: none;
-  }
+	.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+	}
+	 
+	.star-ratings-fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  margin-left: 0.5rem;
+	  font-size: 1rem; 
+	  line-height: 1.75rem; /* 28px */
+	  -webkit-text-fill-color: gold;
+	}
+	 
+	.star-ratings-base {
+	  z-index: 0;
+	  padding: 0;
+	  margin-left: 0.5rem;
+	  font-size: 1rem;
+	  line-height: 1.75rem; /* 28px */
+	}
+	
+	.short_review{
+	margin-bottom: 8px;
+	}
 
   .pg-toplist .container-list .review_more_btn {
     color: #ff792a;
@@ -495,7 +532,7 @@
 
         <!-- 해당 레스토랑 목록 -->
         <section id="contents_list">
-          <p class="hidden">목록</p>
+          <div class="hidden"><a id="reg" href='<c:out value="${member.memberid}" />' >글쓰기</a></div>
 		<c:forEach items="${list}" var="list">
           <ul class="list-restaurants type-single-big top_list_restaurant_list">
             <li class="toplist_list">
@@ -516,22 +553,14 @@
                   <div>
                     <figure>
                       <figcaption>
-                        <div class="info">
-                          <div class="wannago_wrap">
-                            <button class="btn-type-icon favorite wannago_btn "
-                            data-restaurant_uuid=""
-                            data-action_id="">
-                          </button>
-                          <p class="wannago_txt">찜 </p>
-                        </div>
+                        <div class="infomation">
                         <span class="title ">
                         <a class="move" href='<c:out value="${list.bno }" />'>
-                         	<c:out value="${list.bno}"  ></c:out>
                             <h3><c:out value="${list.cafename}"/></h3>
                         </a>
                         </span>
                         <strong class="point ">
-                          <span>평점</span>
+                          <span style="color: #ff792a">평점</span>
                         </strong>
                         <p class="etc "><c:out value="${list.address}"/></p>
                        
@@ -540,8 +569,11 @@
                   </figure>
                   </div>
                   <div class="review-content no-bottom">
-                  리뷰<br>
+                  최근 리뷰<br>
                   <c:forEach items="${listWithReview}" var="listWithReview">
+                  <c:set var="num" value="${list.bno }" />
+                  <c:if test="${listWithReview.bno eq num}">
+                  <c:if test="${not empty listWithReview.rownum }" >
                     <figure class="user">
                       <div class="thumb lazy"
                            data-original="#"
@@ -551,15 +583,21 @@
                         ID : <c:out value="${listWithReview.userid }" />
                       </figcaption>
                     </figure>
-                    <p class="short_review ">
-                      <c:out value="${listWithReview.reply }" /><br>
-                    </p>
-    
-                    <p class="long_review ">
-                      긴 리뷰
-                    </p>
+                      <div class="star-ratings">
+                      <c:set var="grade" value="${listWithReview.replygrade *20 }" />
+				<div class="star-ratings-fill space-x-2 text-lg" style="width: ${grade}%">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+				<div class="star-ratings-base space-x-2 text-lg">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+				</div>
+                    <div class="short_review">
+                      <c:out value="${listWithReview.reply }" />
+				</div>
+					</c:if>    
+					</c:if>    
     				</c:forEach>
-                      <span class="review_more_btn" >더보기</span>
                   </div>
                   <div>
                     <a href='<c:out value="${list.bno }" />' class="btn-detail">
@@ -677,8 +715,29 @@
             	actionForm.attr("action", "/board/content");
             	actionForm.submit();
             });
+
+			$("#reg").on("click", function(e){
+            	
+            	console.log("......Click.....");
+            	
+            	let member = "${member.memberid}";
+				
+				if(member == ""){
+					alert("사업자 회원만 가능합니다.");
+					return false;
+				}
+				
+            	e.preventDefault();
+            	actionForm.empty();
+            	actionForm.append("<input type='hidden' name='memberid' value='" + $(this).attr("href") + "'>");
+            	actionForm.attr("action", "/board/register");
+            	actionForm.submit();
+            });
         });
-	
+
+    	
+    	
+    	
 	</script>
 	
 </body>

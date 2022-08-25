@@ -33,5 +33,21 @@ public interface BoardMapper {
 
 	public void insertHashtag(HashtagVO hashtag);
 
+	public void insertHashtagBno(HashtagVO hashtag);
+
 	public void insertMenu(MenuVO menu);
+
+	public void insertMenuBno(MenuVO menu);
+
+	public MenuVO getMenu(long bno);
+
+	public HashtagVO getHashtag(long bno);
+
+	public int updateM(MenuVO menu);
+
+	public int updateH(HashtagVO hashtag);
+
+	public int deleteReview(long rno);
+
+
 }

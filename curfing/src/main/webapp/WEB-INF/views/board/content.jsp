@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>카페 상세 설명</title>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+ <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=nkahbmp7rl&submodules=geocoder"></script>
 <style>
 * {
 	margin: 0px;
@@ -272,6 +273,8 @@ img {
 
     .pg-cafe .column-contents {
     height: 100%;
+    border-bottom: 1px solid #e9e9e9;
+    margin-bottom: 10px;
     }
 
     .pg-cafe .cafe-detail {
@@ -479,7 +482,7 @@ img {
     .under_line {
     text-decoration: underline !important;
     }
-
+	
     .cafe_MenuList {
     display: flex;
     flex-direction: column;
@@ -488,7 +491,7 @@ img {
     }
 
     .cafe_MenuItem {
-    display: flex;
+    display: inline-block;
     flex-direction: row;
     box-direction: normal;
     box-orient: horizontal;
@@ -754,7 +757,57 @@ img {
     .cafeReviewList__EmptyDescription {
     font-size: 16px;
     }
-
+	
+	.cafeReviewList_Show{
+	margin-bottom: 15px;
+	padding-left: 30px;
+    line-height: 1.4;
+    background-color: transparent;
+	}
+	
+	.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+	}
+	 
+	.star-ratings-fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  -webkit-text-fill-color: gold;
+	}
+	 
+	.star-ratings-base {
+	  z-index: 0;
+	  padding: 0;
+	}
+	
+	.cafeReviewList_ShowId{
+	font-size: 18px;
+	color: #ff792a;
+	}
+	
+	.cafeReviewList_ShowGrade{
+	font-size: 14px;
+	margin-left: 10px;
+	margin-bottom: 3px;
+	}
+	
+	.cafeReviewList_ShowReview{
+	font-size: 14px;
+	margin-left: 10px;
+	}
+	
     .cafeReviewList__MoreReviewButton {
     display: flex;
     justify-content: space-between;
@@ -796,8 +849,8 @@ img {
 
     .pg-cafe .map-container {
     display: inline-block;
-    height: 45  0px;
-    width: 500px;
+    height: 300px;
+    width: 300px;
     background-color: #3e3e3e;
     position: relative;
     cursor: pointer;
@@ -828,6 +881,78 @@ img {
     background-color: #fff;
     }
 
+	#deleteR{
+	font-size: 1.688rem;
+	}
+	
+	.delR{
+	font-size: 0.688rem;
+	color: #9b9b9b;
+	}
+	
+	.delR:hover{
+	cursor: pointer;
+	}
+	
+.modal_wrap {
+    display: none;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    position: absolute;
+    border: 2px solid black;
+    top:50%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+    z-index: 2;
+}
+.modal_background {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0,0, 0.5);
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+.modal_close {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal_wrap .text {
+    margin-top: 45px;
+    margin-left: 15px;
+}
+
+.modal_close .closeImg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#write_pwd{
+	padding-left: 15px;
+	margin-bottom: 10px;
+}
+
+.checkPwd {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 15px;
+	width: 50px;
+	height: 20px;
+	font-size: 11pt;
+	color: azure;
+	border-radius: 15px;
+	background-color: rgb(233, 159, 159);
+	border: none;
+}
+	
     /* footer */
   .bottom {
       border-top: 1px solid grey;
@@ -850,7 +975,7 @@ img {
     }
 
     .info li {
-      display: inline-block;
+      display: flex;
       text-align: start;
     }
 
@@ -874,126 +999,7 @@ img {
 
   <article class="contents">
     <!-- 레스토랑 상세 이미지 슬라이드 -->
-    <aside class="cafe-photos">
-
-        <div class="list-photo_wrap owl-carousel owl-theme" style="opacity: 1; display: block;">
-          <div class="owl-wrapper-outer">
-            <div class="owl-wrapper" style="width: 1600px; left: 0px; display: block; transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px);">
-              <div class="owl-item" style="width: 160px;">
-                <figure class="list-photo">
-                <meta content="#"/>
-                  <figure class="cafe-photos-item" 
-                    role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
-                    <img class="center-croping"
-                       src="${path }/resources/cafephoto/커피.jpg"
-                      alt="카페 사진 - 주소"
-                      width="200px"
-                      height="200px"/>
-              
-                  <div class="last_image">
-                    <p class="txt">
-                      사진 더보기
-                      <span class="arrow-white"></span>
-                    </p>
-                  </div>
-                  </figure>
-                </figure>
-              </div>
-              <div class="owl-item" style="width: 160px;">
-                <figure class="list-photo">
-                <meta content="#"/>
-                  <figure class="cafe-photos-item" 
-                    role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
-                    <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
-                      alt="카페 사진 - 주소"
-                      width="200px"
-                      height="200px"/>
-              
-                  <div class="last_image">
-                    <p class="txt">
-                      사진 더보기
-                      <span class="arrow-white"></span>
-                    </p>
-                  </div>
-                  </figure>
-                </figure>
-              </div>
-              <div class="owl-item" style="width: 160px;">
-                <figure class="list-photo">
-                <meta content="#"/>
-                  <figure class="cafe-photos-item" 
-                    role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
-                    <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
-                      alt="카페 사진 - 주소"
-                      width="200px"
-                      height="200px"/>
-              
-                  <div class="last_image">
-                    <p class="txt">
-                      사진 더보기
-                      <span class="arrow-white"></span>
-                    </p>
-                  </div>
-                  </figure>
-                </figure>
-              </div>
-              <div class="owl-item" style="width: 160px;">
-                <figure class="list-photo">
-                <meta content="#"/>
-                  <figure class="cafe-photos-item" 
-                    role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
-                    <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
-                      alt="카페 사진 - 주소"
-                      width="200px"
-                      height="200px"/>
-              
-                  <div class="last_image">
-                    <p class="txt">
-                      사진 더보기
-                      <span class="arrow-white"></span>
-                    </p>
-                  </div>
-                  </figure>
-                </figure>
-              </div>
-              <div class="owl-item" style="width: 160px;">
-                <figure class="list-photo">
-                <meta content="#"/>
-                  <figure class="cafe-photos-item" 
-                    role="img" aria-label="카페 이름 - 지역 카페 | 카페 검색" title="카페 이름 - 지역 카페 | 카페 검색">
-                    <img class="center-croping"
-                       src="./cafephoto/커피.jpg"
-                      alt="카페 사진 - 주소"
-                      width="200px"
-                      height="200px"/>
-              
-                  <div class="last_image">
-                    <p class="txt">
-                      사진 더보기
-                      <span class="arrow-white"></span>
-                    </p>
-                  </div>
-                  </figure>
-                </figure>
-              </div>
-            </div>    
-          </div>
-          <div class="owl-controls clickable">
-            <div class="owl-buttons">
-              <div class="owl-prev">
-                <button class="btn-nav prev" style="display: none;"></button>
-              </div>
-              <div class="owl-next">
-                <button class="btn-nav next">
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>  
-    </aside>
+    
 
     <div class="column-wrapper">
 
@@ -1005,7 +1011,7 @@ img {
             <header>
               <div class="cafe_title_wrap">
                 <span class="title">
-                  <h1 class="cafe_name"><c:out value="${content.cafename }" /></h1>
+                  <h1 class="cafe_name"><c:out value="${cafe_r.cafename }" /></h1>
                     <strong class="rate-point ">
                       <span>평점</span>
                     </strong>
@@ -1015,18 +1021,14 @@ img {
 
                 <div class="cafe_action_button_wrap">
 
-                  <button data-oper="review" class="review_writing_button" data-cafe_key="">
+                  <button data-oper="review" class="review_writing_button">
                     <i class="review_writing_button_icon"></i>
                     <span class="review_writing_button_text">리뷰쓰기</span>
                   </button>
 
-                  <div class="wannago_wrap">
-                    <button data-oper="wish" class="btn-type-icon favorite wannago_btn " data-cafe_uuid="" data-action_id=""></button>
-                    <p class="wannago_txt">찜</p>
-                  </div>
                   
                   <form id="operForm" action="/board/review" method="get">
-                    <input type="hidden" id="bno" name="bno" value='<c:out value="${content.bno }" />'>
+                    <input type="hidden" id="bno" name="bno" value='<c:out value="${cafe_r.bno }" />'>
                   </form>
                 </div>
               </div>
@@ -1034,9 +1036,7 @@ img {
               <div class="status
                 branch_none
                 ">
-                <span class="cnt hit">본 숫자</span>
-                <span class="cnt review">리뷰 숫자</span>
-                <span class="cnt favorite">찜 숫자</span>
+                <a class="modify" href='<c:out value="${cafe_r.bno }" />' ><span>수정</span></a>
               </div>
             </header>
 
@@ -1044,56 +1044,53 @@ img {
             <!-- 상세 정보 -->
             <div class="test">
             <table class="info">
-              <caption>카페 상세 정보</caption>
 
               <tbody>
                 <tr class="only-desktop">
                   <th>주소</th>
-                  <td><c:out value="${content.address }" /><br/>
-                        <span class="cafe__InfoAddress--Rectangle">지번</span>
-                      <span class="cafe__InfoAddress--Text">지번 주소</span>
+                  <td id="addrInfo"><c:out value="${cafe_r.address }" />
                   </td>
                 </tr>
 
                 <tr class="only-desktop">
                   <th>전화번호</th>
-                  <td><c:out value="${content.phone }" /></td>
+                  <td><c:out value="${cafe_r.phone }" /></td>
                 </tr>
 
                 <tr>
                   <th>음식 종류</th>
                   <td>
-                    <span><c:out value="${content.cafeinfo }" /></span>
+                    <span><c:out value="${cafe_r.cafeinfo }" /></span>
                   </td>
                 </tr>
 
                 <tr>
                   <th>가격대</th>
-                  <td><c:out value="${content.price }" /></td>
+                  <td><c:out value="${cafe_r.price }" /></td>
                 </tr>
 
                 <tr>
                   <th>주차</th>
-                  <td><c:out value="${content.car }" /> </td>
+                  <td><c:out value="${cafe_r.car }" /> </td>
                 </tr>
 
                 <tr>
                   <th>영업시간</th>
-                  <td><c:out value="${content.opentime }" /> ~ <c:out value="${content.closetime }" /></td>
+                  <td><c:out value="${cafe_r.opentime }" /> ~ <c:out value="${cafe_r.closetime }" /></td>
                 </tr>
 
 
 
                 <tr>
                   <th>휴일</th>
-                  <td><c:out value="${content.dayoff }" /></td>
+                  <td><c:out value="${cafe_r.dayoff }" /></td>
                 </tr>
 
                 <tr>
                   <th>웹 사이트</th>
                   <td>
-                    <a href='<c:out value="${content.site }" />' class="under_line" target="_blank" style="color: black;">
-                      <c:out value="${content.site }" />
+                    <a href='<c:out value="${cafe_r.site }" />' class="under_line" target="_blank" style="color: black;">
+                      <c:out value="${cafe_r.site }" />
                     </a>
                   </td>
                 </tr>
@@ -1103,20 +1100,20 @@ img {
                   <td class="menu_td">
                     <ul class="cafe_MenuList">
                         <li class="cafe_MenuItem">
-                          <span class="cafe_Menu"><c:out value="${content.menu }" /></span>
-                            <span class="cafe_MenuPrice">가격1</span>
+                          <span class="cafe_Menu"><c:out value="${menu.menun1 }" /></span>
+                            <span class="cafe_MenuPrice"><c:out value="${menu.menun1 }" /></span>
                         </li>
                         <li class="cafe_MenuItem">
-                          <span class="cafe_Menu">메뉴2</span>
-                            <span class="cafe_MenuPrice">가격2</span>
+                          <span class="cafe_Menu"><c:out value="${menu.menun2 }" /></span>
+                            <span class="cafe_MenuPrice"><c:out value="${menu.menup2 }" /></span>
                         </li>
                         <li class="cafe_MenuItem">
-                          <span class="cafe_Menu">메뉴3</span>
-                            <span class="cafe_MenuPrice">가격3</span>
+                          <span class="cafe_Menu"><c:out value="${menu.menun3 }" /></span>
+                            <span class="cafe_MenuPrice"><c:out value="${menu.menup3 }" /></span>
                         </li>
                         <li class="cafe_MenuItem">
-                          <span class="cafe_Menu">메뉴4</span>
-                            <span class="cafe_MenuPrice">가격4</span>
+                          <span class="cafe_Menu"><c:out value="${menu.menun4 }" /></span>
+                            <span class="cafe_MenuPrice"><c:out value="${menu.menup4 }" /></span>
                         </li>
                     </ul>
                   </td>
@@ -1126,71 +1123,99 @@ img {
            
             </table>
     <!-- 지도 -->
+    <div>
+      <div class="image-container" style="width: 300px;">
+
+		<img class="image_size" style="width: 300px;" id="preview-image"
+						src="/resources/cafephoto/영등포.jfif">
+		</div>
     <div class="map-container" tabindex="0" style="position: relative; overflow: hidden; background: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/pattern_1.png&quot;) 0px 0px repeat transparent;">
-      <div class="map_layer"></div>
-      <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0; cursor: url(&quot;https://ssl.pstatic.net/static/maps/mantle/1x/openhand.cur&quot;), default;">
-        <div style="position: absolute; display: block; margin: 0px; padding: 0px; border: 0px none; top: 0px; left: 0px; overflow: visible; width: 100%; height: 100%; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); z-index: 0;">
-        
-        </div>
+		<div id="map" style="width:100%;height:300px;"></div>
+				
+			<script>
+			//지도보기 액션
+					var Addr_val = '<c:out value = "${cafe_r.address}"/>';
+
+					// 도로명 주소를 좌표 값으로 변환(API)
+					naver.maps.Service.geocode({
+				        query: Addr_val
+				    }, function(status, response) {
+				        if (status !== naver.maps.Service.Status.OK) {
+				            return alert('Something wrong!');
+				        }
+				
+				        var result = response.v2, // 검색 결과의 컨테이너
+				            items = result.addresses; // 검색 결과의 배열
+				            
+				        // 리턴 받은 좌표 값을 변수에 저장
+				        let x = parseFloat(items[0].x);
+				        let y = parseFloat(items[0].y);
+				        
+				        // 지도 생성
+				        var map = new naver.maps.Map('map', {
+							center: new naver.maps.LatLng(y, x), // 지도를 열 좌표
+							zoom: 18
+						});
+						
+				        // 지도에 해당 좌표 마커(아이콘 설정)
+				        var markerOptions = {
+				        	    position: new naver.maps.LatLng(y, x), //마커찍을 좌표
+				        	    map: map,
+				        	    icon: {
+				        	        url: 'resources/image/marker.png', //아이콘 경로
+				        	        size: new naver.maps.Size(22, 36), //아이콘 크기
+				        	        origin: new naver.maps.Point(0, 0),
+				        	        anchor: new naver.maps.Point(11, 35)
+				        	    }
+				        	};
+				        
+				        // 마커 생성
+				        var marker = new naver.maps.Marker(markerOptions);
+				
+				    });
+
+			</script>
       </div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.759534518026!2d126.92489251564653!3d37.49000053626465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9f55d5800531%3A0xa3d2bc3503b9f38d!2z7ZWc6rWt7KCV67O06rWQ7Jyh7JuQ!5e0!3m2!1sko!2skr!4v1658978978119!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
       </div>
     </div>
     </div>
               <p class="update_date">
                 업데이트
-                : 2022. 0. 00
+                : <fmt:formatDate pattern="yyyy-MM-dd" value="${cafe_r.updateDate }" />
               </p>
 
             <div id="reviewListFocusId"></div>
           </section>
 
+<!-- class="column-contents" -->
+
+      <!-- 사이드 영역 -->
+      <div class="side-wrap">
+        <div class="column-side">
+         
+
+          <div class="inner">
+            <!-- 관련 태그 -->
+              <section class="module related-tags only-desktop">
+                <span class="title"><c:out value="${cafe_r.cafename }" /> 관련 태그</span>
+
+                <p>
+                    <a href="#" class="tag-item"><c:out value="${hashtag_t.hashtagname }" /></a>
+                </p>
+              </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- // side-wrap 종료 -->
+
           <section class="cafeReviewList">
             <header class="cafeReviewList__Header">
               <h2 class="cafeReviewList__Title">
-                <span class="cafeReviewList__cafeName"><c:out value="${content.name }" /></span><span class="cafeReviewList__cafeNameSuffixDesktop"> 리뷰</span>
-                <span class="cafeReviewList__AllCount">
-                  0
-                </span>
+                <span class="cafeReviewList__cafeName"><c:out value="${cafe_r.cafename }" /></span><span class="cafeReviewList__cafeNameSuffixDesktop"> 리뷰</span>
               </h2>
 
-              <ul class="cafeReviewList__FilterList">
-                <li class="cafeReviewList__FilterItem">
-                  <button class="cafeReviewList__FilterButton cafeReviewList__FilterButton--Selected cafeReviewList__AllFilterButton">
-                    전체
-                    <span class="cafeReviewList__ReviewCount">
-                      0
-                    </span>
-                  </button>
-                </li>
-
-                <li class="cafeReviewList__FilterItem">
-                  <button class="cafeReviewList__FilterButton cafeReviewList__RecommendFilterButton">
-                    맛있다
-                    <span class="cafeReviewList__ReviewCount">
-                      0
-                    </span>
-                  </button>
-                </li>
-
-                <li class="cafeReviewList__FilterItem">
-                  <button class="cafeReviewList__FilterButton cafeReviewList__OkFilterButton">
-                    괜찮다
-                    <span class="cafeReviewList__ReviewCount">
-                      0
-                    </span>
-                  </button>
-                </li>
-
-                <li class="cafeReviewList__FilterItem">
-                  <button class="cafeReviewList__FilterButton cafeReviewList__NotRecommendButton">
-                    별로
-                    <span class="cafeReviewList__ReviewCount">
-                      0
-                    </span>
-                  </button>
-                </li>
-              </ul>
             </header>
 
             <ul class="cafeReviewList__ReviewList cafeReviewList__ReviewList--Loading">
@@ -1204,60 +1229,126 @@ img {
 			
 			<c:forEach items="${reviewList}" var="reviewList">
 			
-			<div>
-			  <span><c:out value="${reviewList.userid }" /></span><br>
-			  <span><c:out value="${reviewList.replygrade }" /></span>
-			  <span><c:out value="${reviewList.reply }" /></span>
+			<div class="cafeReviewList_Show">
+			  <div class="cafeReviewList_ShowId">
+			  <c:out value="${reviewList.userid }" />
+			  </div>
+			  <div class="cafeReviewList_ShowGrade">
+			  <div class="star-ratings">
+                <c:set var="grade" value="${reviewList.replygrade *20 }" />
+				<div class="star-ratings-fill space-x-2 text-lg" style="width: ${grade}%">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+				<div class="star-ratings-base space-x-2 text-lg">
+					<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+				</div>
+				</div>
+			  </div>
+			  <div class="cafeReviewList_ShowReview">
+			  <c:out value="${reviewList.reply }" /><br>
+			  <div id="deleteR">
+			  <a class="delR">삭제</a>
+			  <div class="modal_background"></div>
+				<div class="modal_wrap">
+				    <div class="modal_close"><img class="closeImg" src="/resources/image/closeBtn.png" alt="x버튼"></div>
+				    <div class="text">
+				    <form id="Form" action="/board/removeReview" method="post">
+				        <div id="write_pwd">비밀번호를 입력해주세요.</div>
+				        <input type="hidden" id="rbno" name="rbno" value='<c:out value="${reviewList.bno }" />' > 
+				        <input type="hidden" id="rno" name="rno" value='<c:out value="${reviewList.rno }" />' > 
+				        <input type="hidden" id="rpwd" name="rpwd" value='<c:out value="${reviewList.rpwd }" />' > 
+				        <input type="text" id="pwd" name="pwd" style="margin-bottom: 10px;"> <br>
+				        <button class="checkPwd" type="submit">확인</button>
+				    </form>
+				    </div>
+				</div>
+			  </div>
+			  </div>
+			  
 			</div>
 			</c:forEach>
-            <div class="cafeReviewList__MoreReviewButton cafeReviewList__MoreReviewButton--Hide" role="button">
-              더보기
-            </div>
+			
           </section>
 
             
-      <!-- class="column-contents" -->
-
-      <!-- 사이드 영역 -->
-      <div class="side-wrap">
-        <div class="column-side">
-         
-
-          <div class="inner">
-            <!-- 관련 태그 -->
-              <section class="module related-tags only-desktop">
-                <span class="title"><c:out value="${content.cafename }" /> 관련 태그</span>
-
-                <p>
-                    <a href="#" class="tag-item"><c:out value="${hashtag_t.hashtagname }" /></a>
-                    <a href="#" class="tag-item">태그</a>
-                    <a href="#" class="tag-item">태그</a>
-                    <a href="#" class="tag-item">태그</a>
-                    <a href="#" class="tag-item">태그</a>
-                    <a href="#" class="tag-item">태그</a>
-                    <a href="#" class="tag-item">태그</a>
-                </p>
-              </section>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- // side-wrap 종료 -->
+      
   </article>
 
 
-<%@ include file="../includes/footer.jsp"%>
-
 <script type="text/javascript">
+
 				$(document).ready(function(){
 					var operForm = $("#operForm");
 					
 					$("button[data-oper='review']").on("click", function(e){
-						operForm.attr("action", "/board/review").submit();
+						let user = "${userid}";
+						
+						if(user == ""){
+							alert("로그인 후 이용해주세요");
+							return false;
+						}
+						
+						e.preventDefault();
+						operForm.attr("action", "/board/review?userid=${userid}")
+						operForm.submit();
 					});
 					
-					$("button[data-oper='wish']").on("click", function(e){
+					$(".modify").on("click", function(e){
+		            	
+		            	console.log("......Click.....");
+		            	
+		            	let member = "${member.memberid}";
 						
-					});
+						if(member != "${cafe_r.memberid}"){
+							alert("게시자만 가능합니다.");
+							return false;
+						}
+						
+		            	e.preventDefault();
+		            	operForm.empty();
+		            	operForm.append("<input type='hidden' name='memberid' value='" + $(this).attr("href") + "'>");
+		            	operForm.attr("action", "/board/modify");
+		            	operForm.submit();
+		            });
+					
+					// 모달 열기
+					function modalOpen() {
+					    document.querySelector('.modal_wrap').style.display = 'block';
+					    document.querySelector('.modal_background').style.display = 'block';
+					}
+
+					// 모달 끄기
+					function modalClose() {
+					    document.querySelector('.modal_wrap').style.display = 'none';
+					    document.querySelector('.modal_background').style.display = 'none';
+					}
+
+
+					//버튼 클릭리스너 달기
+					document.querySelector('.delR').addEventListener('click', modalOpen);
+					document.querySelector('.modal_close').addEventListener('click', modalClose);
+
+					
+					$(".checkPwd").on("click", function(e){
+		            	
+		            	console.log("......Click.....");
+		            	
+		            	var pwd = $("#pwd").val();
+						console.log(pwd);
+						if(pwd !== $("#rpwd").val()){
+							alert("비밀번호가 맞지 않습니다.");
+							return false;
+						}
+						
+						
+						
+		            });
+					
+					
 				});
-			</script> 
+				
+</script> 
+
+<%@ include file="../includes/footer.jsp"%>
+
+

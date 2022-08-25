@@ -272,7 +272,7 @@ h3 {
 
 <!-- section -->
 <section class="join">
-	<h2><c:out value="${content.name }" /> 리뷰를 적어주세요.</h2>
+	<h2><c:out value="${cafe_r.cafename }" /> 리뷰를 적어주세요.</h2>
 	<div class="join_box">
 		<!-- 리뷰 등록 부분 -->
 		<form
@@ -293,9 +293,9 @@ h3 {
   <label for="1-star" class="star">&#9733;</label>
 </div>
 			
-		<input type="hidden" id="bno" name="bno" value='<c:out value="${content.bno }" />'><br>
-		ID : <input type="text" class="userid" id="userid" name="userid" value='<c:out value="${user.userid }" />' readonly>
-			
+		<input type="hidden" id="bno" name="bno" value='<c:out value="${cafe_r.bno }" />'><br>
+		ID : <input type="text" class="userid" id="userid" name="userid" value='<c:out value="${user.userid }" />' readonly><br>
+		비밀번호 : <input type="text" class="userid" id="rpwd" name="rpwd" required>
 			</div>
 			
 			<div class="review_box">

@@ -34,4 +34,15 @@ public interface BoardService {
 	public int regMenu(MenuVO menu);
 
 	public int regHashtag(HashtagVO hashtag);
+
+	public MenuVO getMenu(long bno);
+
+	public HashtagVO getHashtag(long bno);
+
+	public int modifyM(MenuVO menu);
+
+	public int modifyH(HashtagVO hashtag);
+
+	public boolean removeReview(long rno);
+
 }

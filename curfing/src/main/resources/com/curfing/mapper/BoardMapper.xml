@@ -12,11 +12,12 @@
 	</select>
 	
 	<select id="getListWithReview" resultType="com.curfing.domain.ReviewVO">
-		select * from(
-			select review.* from review inner join cafe_r on review.bno = cafe_r.bno where cafe_r.bno=1 order by review.rno desc 
-		)
-		where rownum =1
+		<![CDATA[
+			select rownum, review.* from review inner join cafe_r on review.bno = cafe_r.bno order by review.rno desc
+		]]>
 	</select>
+	
+	
 	
 	<select id="getUser" resultType="com.curfing.domain.UserVO">
 		select * from user_t where userid = #{userid}
@@ -34,8 +35,20 @@
 		delete cafe_r where bno = #{bno}
 	</delete>
 	
+	<delete id="deleteReview">
+		delete review where rno = #{rno}
+	</delete>
+	
 	<update id="update">
-		update cafe_r set cafename=#{cafename}, address=#{address}, phone=#{phone}, cafeinfo=#{cafeinfo}, price=#{price}, car=#{parking}, opentime=#{opentime}, closetime=#{closetime}, dayoff=#{dayoff}, site=#{site}, menu=#{menu}, regDate=sysdate where bno=#{bno}
+		update cafe_r set cafename=#{cafename}, address=#{address}, phone=#{phone}, cafeinfo=#{cafeinfo}, price=#{price}, car=#{car}, opentime=#{opentime}, closetime=#{closetime}, dayoff=#{dayoff}, site=#{site}, regDate=sysdate where bno=#{bno}
+	</update>
+	
+	<update id="updateM">
+		update menu set cafename=#{cafename}, bno=#{bno}, menun1=#{menun1}, menun2=#{menun2}, menun3=#{menun3}, menun4=#{menun4}, menup1=#{menup1}, menup2=#{menup2}, menup3=#{menup3}, menup4=#{menup4} where bno=#{bno}
+	</update>
+	
+	<update id="updateH">
+		update hashtag_t set cafename=#{cafename}, bno=#{bno}, hashtagname=#{hashtagname} where bno=#{bno}
 	</update>
 	
 	<select id="read" resultType="com.curfing.domain.BoardVO">
@@ -43,18 +56,51 @@
 	</select>
 	
 	<insert id="insertReview">
-		insert into review(rno, userid, bno, replygrade, reply) values(seq_review.nextval, #{userid}, #{bno}, #{replygrade}, #{reply})
+		insert into review(rno, userid, bno, rpwd, replygrade, reply) values(seq_review.nextval, #{userid}, #{bno}, #{rpwd}, #{replygrade}, #{reply})
 	</insert>
+	
+	<select id="getMenu" resultType="com.curfing.domain.MenuVO">
+		select * from menu where bno = #{bno}
+	</select>
+	
+	<select id="getHashtag" resultType="com.curfing.domain.HashtagVO">
+		select * from hashtag_t where bno = #{bno}
+	</select>
 	
 	<insert id="insertMenu">
-		insert into menu(menuno, bno, menun1) values(seq_menu.nextval, #{bno}, #{menun1})
+		insert into menu(menuno, menun1, menun2, menun3, menun4, menup1, menup2, menup3, menup4, cafename) values(seq_menu.nextval, #{menun1}, #{menun2}, #{menun3}, #{menun4}, #{menup1}, #{menup2}, #{menup3}, #{menup4}, #{cafename})
 	</insert>
 	
+	<update id="insertMenuBno">
+		merge 
+			into menu 
+			using cafe_r
+			on (menu.cafename = cafe_r.cafename)
+			when matched then
+				update
+					set menu.bno = cafe_r.bno
+		
+	</update>
+	
 	<insert id="insertHashtag">
-		insert into hashtag_t(hno, hashtagname, bno) values(seq_hashtag.nextval, #{hashtagname}, #{bno})
+		insert into hashtag_t(hno, hashtagname, cafename) values(seq_hashtag.nextval, #{hashtagname}, #{cafename})
 	</insert>
+	
+	<update id="insertHashtagBno">
+		merge 
+			into hashtag_t 
+			using cafe_r
+			on (hashtag_t.cafename = cafe_r.cafename)
+			when matched then
+				update
+					set hashtag_t.bno = cafe_r.bno
+	
+	</update>
+	
 	<select id="getReviewList" resultType="com.curfing.domain.ReviewVO">
-		select * from review where bno = #{bno}
+		<![CDATA[
+		select * from review where bno = #{bno} order by rno desc
+		]]>
 	</select>
 	
 </mapper>

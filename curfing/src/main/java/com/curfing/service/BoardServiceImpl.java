@@ -105,7 +105,7 @@ public class BoardServiceImpl implements BoardService {
 		log.info("regMenu....." + menu);
 		
 		mapper.insertMenu(menu);
-		
+		mapper.insertMenuBno(menu);
 		return menu.getBno();
 	}
 	
@@ -114,7 +114,43 @@ public class BoardServiceImpl implements BoardService {
 		log.info("regHashtag....." + hashtag);
 		
 		mapper.insertHashtag(hashtag);
-		
+		mapper.insertHashtagBno(hashtag);
 		return hashtag.getBno();
 	}
+
+	@Override
+	public MenuVO getMenu(long bno) {
+		log.info("getMenu....");
+
+		return mapper.getMenu(bno);
+	}
+
+	@Override
+	public HashtagVO getHashtag(long bno) {
+		log.info("getHahstag....");
+		
+		return mapper.getHashtag(bno);
+	}
+
+	@Override
+	public int modifyM(MenuVO menu) {
+		log.info("modify........." + menu);
+		
+		return mapper.updateM(menu);
+	}
+
+	@Override
+	public int modifyH(HashtagVO hashtag) {
+		log.info("modify........." + hashtag);
+		
+		return mapper.updateH(hashtag);
+	}
+
+	@Override
+	public boolean removeReview(long rno) {
+		log.info("removeReview........");
+		
+		return mapper.deleteReview(rno)==1;
+	}
+
 }

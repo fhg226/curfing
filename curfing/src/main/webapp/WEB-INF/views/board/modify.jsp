@@ -6,7 +6,7 @@
 <html lang="ko">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <title>등록 </title>
 
   <style>
@@ -180,11 +180,11 @@ h3 {
 	margin: 5px;
 }
 
-.join_btn {
+.modify_btn {
 	margin-top: 20px;
 	margin-bottom: 40px;
-	margin-left: 280px;
-	width: 410px;
+	margin-left: 220px;
+	width: 200px;
 	height: 40px;
 	font-size: 15pt;
 	color: azure;
@@ -193,11 +193,35 @@ h3 {
 	border: none;
 }
 
-.join_btn:hover {
+.remove_btn {
 	margin-top: 20px;
 	margin-bottom: 40px;
-	margin-left: 280px;
-	width: 410px;
+	margin-left: 30px;
+	width: 200px;
+	height: 40px;
+	font-size: 15pt;
+	color: azure;
+	border-radius: 15px;
+	background-color: rgb(233, 159, 159);
+	border: none;
+}
+
+.modify_btn:hover {
+	margin-top: 20px;
+	margin-bottom: 40px;
+	margin-left: 220px;
+	width: 200px;
+	height: 40px;
+	font-size: 15pt;
+	color: azure;
+	background-color: rgb(80, 80, 80);
+}
+
+.remove_btn:hover {
+	margin-top: 20px;
+	margin-bottom: 40px;
+	margin-left: 30px;
+	width: 200px;
 	height: 40px;
 	font-size: 15pt;
 	color: azure;
@@ -293,9 +317,9 @@ function jusoCallBack(address,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, ji
 	<h2>내용을 적어주세요.</h2>
 	<div class="join_box">
 		<!-- 사진 등록 부분 -->
-		<form
-			action="/board/register"
-			method="post" name="register" id="register">
+		<form id="modifyForm"
+			action="/board/modify"
+			method="post" >
 
 			<div class="join_input">
 
@@ -347,11 +371,12 @@ function jusoCallBack(address,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, ji
 					<tr>
 						<td colspan="2">
 							<h3>카페 정보</h3>
+							<input type="hidden" id="bno" name="bno" value='<c:out value="${cafe_r.bno }" />' >
 						</td>
 					</tr>
 					<tr>
 						<td>카페 이름</td>
-						<td><input class="cafename" type="text" name="cafename" required><br>
+						<td><input class="cafename" type="text" name="cafename" value='<c:out value="${cafe_r.cafename }" />' required><br>
 						</td>
 					</tr>
 					<tr>
@@ -359,7 +384,7 @@ function jusoCallBack(address,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, ji
 						<td>
 						<input type="hidden" id="confmKey" name="confmKey" value=""  >
 						<input type="hidden" id="zipNo" name="zipNo" placeholder="우편번호" onclick="goPopup()" readonly>
-						<input class="address" id="address" type="text" onclick="goPopup()" name="address" required><br>
+						<input class="address" id="address" type="text" onclick="goPopup()" name="address" value='<c:out value="${cafe_r.address }" />'required><br>
 						<button type="button" id="btn_addr" onclick="goPopup()">주소 검색</button><br>
 						<input type="hidden" id="roadAddrPart1" name="roadAddrPart1" />
 						<input type="hidden" id="addrDetail" name="addrDetail" />
@@ -368,71 +393,86 @@ function jusoCallBack(address,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, ji
 					</tr>
 					<tr>
 						<td>전화 번호</td>
-						<td><input class="phone" type="text" name="phone" required><br>
+						<td><input class="phone" type="text" name="phone" value='<c:out value="${cafe_r.phone }" />'required><br>
 						</td>
 					</tr>
 					<tr>
 						<td>음식 종류</td>
-						<td><input class="cafeinfo" type="text" name="cafeinfo" placeholder="카페/디저트"><br>
+						<td><input class="cafeinfo" type="text" name="cafeinfo" value='<c:out value="${cafe_r.cafeinfo }" />'><br>
 						</td>
 					</tr>
 					<tr>
 						<td>가격대</td>
-						<td><input class="price" type="text" name="price" ><br></td>
+						<td><input class="price" type="text" name="price" value='<c:out value="${cafe_r.price }" />'><br></td>
 					</tr>
 					<tr>
 						<td>주차</td>
 						<td>
-						<input class="car" type="text" name="car" placeholder="가능 or 불가능"><br>
+						<input class="car" type="text" name="car" value='<c:out value="${cafe_r.car }" />'><br>
 
 						</td>
 					</tr>
 					<tr>
 						<td>영업 시간</td>
 						<td>
-							<input class="opentime" type="text" name="opentime" style="width: 109px" required>
+							<input class="opentime" type="text" name="opentime" style="width: 109px" value='<c:out value="${cafe_r.opentime }" />'required>
 							&nbsp;&nbsp;~&nbsp;&nbsp;
-							<input class="closetime" type="text" name="closetime" style="width: 109px" required><br>
+							<input class="closetime" type="text" name="closetime" style="width: 109px" value='<c:out value="${cafe_r.closetime }" />' required><br>
 						</td>
 					</tr>
 					<tr>
 						<td>휴일</td>
-						<td><input class="dayoff" type="text" name="dayoff" required><br>
+						<td><input class="dayoff" type="text" name="dayoff" value='<c:out value="${cafe_r.dayoff }" />' required><br>
 
 						</td>
 					</tr>
 					<tr>
 						<td>웹사이트</td>
-						<td><input class="site" type="text" name="site" ><br>
+						<td><input class="site" type="text" name="site" value='<c:out value="${cafe_r.site }" />'><br>
 
 						</td>
 					</tr>
 					<tr>
 						<td style="padding-bottom: 160px;">메뉴</td>
 						<td>
-						<input id="menun" type="text" name="menun1" placeholder="메뉴 이름"><input id="menup" type="text" name="menup1" placeholder="가격"><br>
-						<input id="menun" type="text" name="menun2" placeholder="메뉴 이름"><input id="menup" type="text" name="menup2" placeholder="가격"><br>
-						<input id="menun" type="text" name="menun3" placeholder="메뉴 이름"><input id="menup" type="text" name="menup3" placeholder="가격"><br>
-						<input id="menun" type="text" name="menun4" placeholder="메뉴 이름"><input id="menup" type="text" name="menup4" placeholder="가격">
+						<input id="menun" type="text" name="menun1" value='<c:out value="${menu.menun1 }" />' ><input id="menup" type="text" name="menup1" value='<c:out value="${menu.menup1 }" />' ><br>
+						<input id="menun" type="text" name="menun2" value='<c:out value="${menu.menun2 }" />' ><input id="menup" type="text" name="menup2" value='<c:out value="${menu.menup2 }" />' ><br>
+						<input id="menun" type="text" name="menun3" value='<c:out value="${menu.menun3 }" />' ><input id="menup" type="text" name="menup3" value='<c:out value="${menu.menup3 }" />' ><br>
+						<input id="menun" type="text" name="menun4" value='<c:out value="${menu.menun4 }" />' ><input id="menup" type="text" name="menup4" value='<c:out value="${menu.menup4 }" />' >
 						</td>
 					</tr>
 					<tr>
 						<td>태그</td>
 						<td>
-							<input class="hashtagname" type="text" name="hashtagname" placeholder="#태그, #태그" >
+							<input class="hashtagname" type="text" name="hashtagname" value='<c:out value="${hashtag_t.hashtagname }" />' >
 						</td>
 					</tr>
 				</table>
 			</div>
 			<!--내용 제목 오른쪽 끝 -->
 	<br> <br>		
-		<button class="join_btn" type="submit" value="join" onclick="test()">등록</button>
+		<button class="modify_btn" type="submit" data-oper='modify' onclick="test()">수정</button>
+		<button class="remove_btn" type="submit" data-oper="remove">삭제</button>
 	</form>
+	
+	<script>
+	$(document).ready(function(){
+    	var formObj = $("#modifyForm");
+    	
+    	$(".remove_btn").on("click", function(e){
+        	e.preventDefault();
+    		
+	    		formObj.attr("action", "/board/remove");
+    			formObj.submit();
+    		
+    	});
+   });
+	</script>
 	</div>
 	
 
 
-
+</section>	
 
 
 
@@ -453,18 +493,16 @@ function jusoCallBack(address,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, ji
         	  }else if(document.($(".dayoff").value) == ""){
         		  alert("휴일을 적어주세요");
         	  }else{
-        		  alert("등록되었습니다.");		  
+        		  alert("수정되었습니다.");		  
         	  }
+          }
+        	  
         
-        
-     
-     
-       }
           
         </script>
 
 
 
-</section>
+
 
 <%@ include file="../includes/footer.jsp"%>
