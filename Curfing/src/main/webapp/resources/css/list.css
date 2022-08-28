@@ -1,0 +1,515 @@
+@charset "UTF-8";
+ *{
+  margin: 0px;
+  padding: 0px;
+}
+html, body{
+  font-size: 13px;
+  font-family: 돋음체, sans-serif, serif;
+}
+body{
+  width: 980px; /* % - 브라우저 크기 기준 */
+  margin: 0 auto;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+	text-decoration:none;
+}
+img{
+  border: none;
+}
+
+    /* 로그인, 회원가입, 마이페이지 */
+    .topNav>ul {
+      text-align: right;
+      padding-top: 5px;
+    }
+
+    .topNav li {
+      display: inline-block;
+      margin-left: 2px;
+    }
+
+    .topNav li>a {
+      display: inline-block;
+      padding: 5px 5px;
+      background-color: rgb(233, 159, 159);
+      border-radius: 8px;
+      color: azure;
+    }
+
+    .topNav li>a:hover {
+      color: azure;
+      background-color: #C3E2DD;
+    }
+  
+  .login_success_area{
+     font-size: 13px;
+     color: black;
+  }
+  
+  .login_success_area >a{
+   display: inline-block;
+      padding: 5px 5px;
+      background-color: rgb(233, 159, 159);
+      border-radius: 8px;
+      color: azure;
+  }
+
+    /* 로고 */
+    .logo {
+      text-align: center;
+      font-size: 90pt;
+      margin-bottom: 50px;
+    }
+
+    .logo>a {
+      color: rgb(233, 159, 159);
+    }
+
+    /* 검색 */
+    
+    /* 메인 메뉴 */
+    .mainMenu {
+      text-align: center;
+      margin-bottom: 50px;
+      border-bottom: 2px solid #C3E2DD;
+    }
+
+    .mainMenu li {
+
+      display: inline-block;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 10px 40px;
+
+    }
+
+    .mainMenu li>a {
+      display: inline-block;
+      padding: 5px 20px;
+      background-color: rgb(233, 159, 159);
+      border-radius: 15px;
+      color: azure;
+      margin-bottom: 30PX;
+    }
+
+    .mainMenu li>a:hover {
+      text-decoration: none;
+      background-color: #C3E2DD;
+    }
+
+ /* 로고 */
+.logo {
+	text-align: center;
+	font-size: 90pt;
+	margin-bottom: 50px;
+}
+.logo>a {
+	color: rgb(233, 159, 159);
+}
+
+/* 메인 메뉴 */
+.mainMenu {
+	text-align: center;
+	margin-bottom: 50px;
+	border-bottom: 2px solid rgb(233, 159, 159);
+}
+.mainMenu li {
+	display: inline-block;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 10px 40px;
+}
+.mainMenu li>a {
+	display: inline-block;
+	padding: 5px 20px;
+	background-color: rgb(233, 159, 159);
+	border-radius: 15px;
+	color: azure;
+}
+.mainMenu li>a:hover {
+	text-decoration: none;
+	background-color: cadetblue;
+}
+/* 본문 상단 페이지 제목 및 설명 */
+.pg-toplist .basic-info-list {
+	background-color: #f7f7f7;
+}
+.inner {
+	padding-bottom: 10px;
+}
+.pg-toplist .basic-info-list .status {
+	font-size: 0.625rem;
+	color: #9b9b9b;
+	line-height: 1.2em;
+	text-align: center;
+}
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.hidden {
+	padding-top: 10px;
+	text-align: right;
+	font-size: 20px;
+	color: grey;
+	}
+	
+.pg-toplist .basic-info-list .title {
+	margin-top: 11px;
+	font-size: 1.625rem;
+	color: #000000;
+	line-height: 1.2em;
+	text-align: center;
+}
+.pg-toplist .basic-info-list .desc {
+	margin-top: 9px;
+	font-size: 1.063rem;
+	color: #9b9b9b;
+	line-height: 1.2em;
+	text-align: center;
+}
+.list-restaurants.type-single-big {
+	margin-top: 5px;
+}
+.list-restaurants {
+	overflow: hidden;
+}
+ol, ul, ul li {
+	list-style: none;
+}
+ul {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+.list-restaurants.type-single-big>li {
+	float: none;
+	padding: 18px 15px;
+	width: 100%;
+	border-bottom: 1px solid #dbdbdb;
+}
+.list-restaurants>li {
+	box-sizing: border-box;
+}
+li {
+	display: list-item;
+	text-align: -webkit-match-parent;
+}
+.list-restaurants.type-single-big>li .with-review {
+	position: relative;
+}
+.restaurant-item {
+	position: relative;
+	width: 260px;
+	display: inline-block;
+}
+.restaurant-item .thumb {
+	position: relative;
+	overflow: hidden;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+.list-content {
+	display: inline-block;
+	width: 635px;
+	padding-left: 10px;
+}
+.restaurant-item .info {
+	position: relative;
+	text-decoration: none;
+}
+.pg-toplist .container-list .wannago_wrap {
+	float: right;
+	text-align: center;
+	position: relative;
+}
+.pg-toplist .container-list .wannago_wrap .favorite {
+	position: static;
+	top: 12px;
+	right: 10px;
+	z-index: 2;
+}
+.btn-type-icon.favorite {
+	background-image:
+		url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_desktop.png);
+	background-position: -935px -583px;
+	width: 32px;
+	height: 32px;
+}
+.btn-type-icon {
+	display: inline-block;
+	text-indent: -9999px;
+	vertical-align: middle;
+}
+button {
+	appearance: none;
+	cursor: pointer;
+	border: 0px;
+	border-radius: 0;
+	background-color: transparent;
+}
+.pg-toplist .container-list .wannago_wrap .wannago_txt {
+	font-size: 0.7rem;
+	color: #9b9b9b;
+	margin-top: 6px;
+}
+.restaurant-item .info .title {
+	display: inline-block;
+	overflow: hidden;
+	max-width: 64%;
+	font-size: 1.000rem;
+	color: #555;
+	line-height: 1.3em;
+	vertical-align: middle;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.restaurant-item .info .point {
+	display: inline-block;
+	font-size: 1.375rem;
+	color: #ff792a;
+	vertical-align: middle;
+	line-height: 1em;
+}
+.type-single-big .review-content {
+	display: block;
+	position: relative;
+	overflow: visible;
+	padding-left: 40px;
+	height: auto;
+	min-height: 40px;
+}
+.list-restaurants .review-content {
+	font-size: 0.875rem;
+	line-height: 21px;
+}
+.type-single-big .review-content .user {
+	display: inline;
+	position: static;
+	width: auto;
+	font-size: 0.688rem;
+	line-height: 17px;
+}
+.type-single-big .review-content .user>.thumb {
+	position: absolute;
+	top: 4px;
+	left: 2px;
+	overflow: hidden;
+	height: 30px;
+	width: 30px;
+	border-radius: 30px;
+}
+.type-single-big .review-content .user>figcaption {
+	display: inline;
+	font-weight: bold;
+	color: #000000;
+	line-height: 18px;
+}
+.list-restaurants .review-content {
+	position: relative;
+	overflow: hidden;
+	margin-top: 8px;
+	padding-left: 52px;
+	height: 150px;
+	font-size: 0.875rem;
+	line-height: 21px;
+	color: #333;
+}
+
+.star-ratings {
+  color: #aaa9a9; 
+  position: relative;
+  unicode-bidi: bidi-override;
+  width: max-content;
+  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1.3px;
+  -webkit-text-stroke-color: #2b2a29;
+	}
+	 
+	.star-ratings-fill {
+	  color: #fff58c;
+	  padding: 0;
+	  position: absolute;
+	  z-index: 1;
+	  display: flex;
+	  top: 0;
+	  left: 0;
+	  overflow: hidden;
+	  margin-left: 0.5rem;
+	  font-size: 1rem; 
+	  line-height: 1.75rem; /* 28px */
+	  -webkit-text-fill-color: gold;
+	}
+	 
+	.star-ratings-base {
+	  z-index: 0;
+	  padding: 0;
+	  margin-left: 0.5rem;
+	  font-size: 1rem;
+	  line-height: 1.75rem; /* 28px */
+	}
+	
+	.short_review{
+	margin-bottom: 8px;
+	}
+	
+	
+.pg-toplist .container-list .long_review {
+	display: none;
+}
+.pg-toplist .container-list .review_more_btn {
+	color: #ff792a;
+	cursor: pointer;
+}
+.pg-toplist .container-list .restaurant-more-name {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	display: inline-block;
+	text-align: right;
+	width: 570px;
+}
+.pg-toplist .container-list .restaurant-more-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+	display: inline-block;
+	text-align: right;
+}
+.more_btn_wrapper {
+	display: flex;
+	justify-content: space-between;
+	box-pack: justify;
+	align-items: center;
+	box-align: center;
+	align-self: center;
+	min-width: 130px;
+	height: 72px;
+	margin: 0 auto;
+	font-size: 19px;
+	color: #ff792a;
+	cursor: pointer;
+}
+.more_btn_wrapper:before {
+	background-image:
+		url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+	background-position: -588px -539px;
+	width: 22px;
+	height: 22px;
+	content: '';
+	margin-right: 17px;
+	margin-left: 420px;
+}
+.more_btn_wrapper:after {
+	background-image:
+		url(https://mp-seoul-image-production-s3.mangoplate.com/web/resources/2018022864551sprites_mobile.png);
+	background-position: -588px -539px;
+	width: 22px;
+	height: 22px;
+	content: '';
+	margin-left: 17px;
+	margin-right: 420px;
+}
+/* footer */
+.bottom {
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	padding: 10px;
+	display: flex;
+	justify-content: space-around;
+	background-color: white;
+}
+.icon li {
+	display: inline-block;
+	text-align: center;
+}
+.info {
+	padding-top: 30px;
+}
+.info li {
+	display: inline-block;
+	text-align: start;
+}
+.copyright {
+	background-color: white;
+	text-align: left;
+	padding: 10px;
+}
+.pull-right {
+	margin-left: 660px;
+	width: 980px;
+	height: 30px;
+}
+
+.pageInfo_wrap{
+	height: 50px;
+	margin-left: 300px;
+
+}
+
+
+     .pageInfo_btn {
+	width: 25px;
+	height: 20px;
+	border-radius: 5px;
+	list-style-type: none;
+	float: left;
+	margin: 1px;
+	background-color: rgb(233, 159, 159);
+	text-align: center;
+}
+.pageInfo_btn:hover {
+	background-color: grey;
+}
+.pageInfo_btn>a {
+	width: 25px;
+	height: 20px;
+	border-radius: 5px;
+	color: rgb(255, 255, 255);
+}
+
+ 
+    #searchForm{
+    margin:0 auto;
+    }
+    
+    
+    
+    select{
+        width: 150px;
+   border: 1px solid #bbb;
+   margin-bottom: 50px;
+   padding: 15px 17px 15.5px;
+   margin-right: -6px;
+   margin-left: 200px;
+    }
+  .sinput {
+    height: 17px;
+    width: 300px;
+   border: 1px solid #bbb;
+   margin-bottom: 50px;
+   padding: 15px 17px;
+}
+.sbtn{
+    width: 100px;
+   border: 1px solid #bbb;
+   margin-bottom: 50px;
+   padding: 15.5px 17px 16px;
+   margin-left: -6px;
+}

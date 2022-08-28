@@ -1,0 +1,290 @@
+ /* header */
+    /* 로그인, 회원가입, 마이페이지, 고객센터 */
+    .topNav>ul{
+      text-align: right;
+      padding-top: 5px;
+    }
+    .topNav li{
+      display: inline-block;
+      margin-left: 2px;
+    }
+    .topNav li>a{
+      display: inline-block;
+      padding: 5px 5px;
+     background-color: rgb(233, 159, 159);
+     border-radius: 8px;
+     color: azure;
+    }
+    .topNav li>a:hover{
+      color: azure;
+      background-color: #C3E2DD;
+    }
+    /* 로고 */
+    .logo{
+      text-align: center;
+      font-size: 50pt;
+      margin-bottom: 5px;
+    }
+    .logo img{
+      width: 100px;
+      height: 100px;
+    }
+    .logo>a{
+      color: rgb(233, 159, 159);
+    }
+    /* section */
+    .login{
+      padding-top: 50px;
+    }
+    .login>h2{
+      color: rgb(233, 159, 159);
+      padding-bottom: 5px;
+    }
+    .login_box{
+      color: cadetblue;
+      border-top: 3px solid rgb(233, 159, 159);
+      padding: 10px;
+      overflow: hidden;
+    }
+     
+          /* section */
+      h2{
+        font-weight: bold;
+        font-size: large;
+      }
+      .join{
+        padding-top: 50px;
+        margin-bottom: 20px;
+      }
+      .join>h2{
+        color: rgb(233, 159, 159);
+        padding-bottom: 5px;
+      }
+      .join_box{
+        border-top: 1px solid rgb(233, 159, 159);
+        padding: 10px 250px 10px 300px;
+        /* text-align: center; */
+      }
+      .join_input{
+        margin-top: 30px;
+      }
+      .join_input>h4{
+        text-align: left;
+        padding-left: 15px;
+      }
+      #star{
+        color: red;
+      }
+      .id_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .id_name{
+      font-size: large;
+      font-weight: bold;
+      }
+       .id_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      }
+      
+       .pw_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .pw_name{
+      font-size: large;
+      font-weight: bold;
+      }
+       .pw_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      } 
+      
+       .pwck_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .pwck_name{
+      font-size: large;
+      font-weight: bold;
+      }
+      .pwck_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      }
+      
+       .user_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .user_name{
+      font-size: large;
+      font-weight: bold;
+      }
+       .user_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      } 
+      
+       .mail_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .mail_name{
+      font-size: large;
+      font-weight: bold;
+      }
+      .mail_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      } 
+      .mail_check_wrap{
+      margin-top: 20px;   
+  }
+  .mail_check_input_box{
+     border: 1px solid black;
+    height:22px;
+    padding: 10px 14px;
+    width: 60%;
+    float: left;
+  }
+  .mail_check_input{
+   width:100%;
+   height:100%;
+   border:none;
+   font-size:28px;
+  }
+  .mail_check_button{
+      border: 1px solid black;
+      height: 42px;
+      width: 130px;
+      float: right;
+      line-height: 40px;
+      text-align: center;
+      font-size: large;
+      font-weight: 900;
+      background-color: #ececf7;
+      cursor: pointer;
+  }
+  
+  
+  
+  .phone_name{
+      font-size: large;
+      font-weight: bold;
+      }
+  .phone_input_1{
+       width: 410px;
+       height: 40px;
+       margin: 5px;
+      }
+      .labels{
+        margin: 5px;
+        text-align: left;
+        padding-left: 15px;
+      }
+      
+    
+    .login_btn{
+      width: 414px;
+      height: 40px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 15pt;
+      color: white;
+      background-color: rgb(233, 159, 159);
+      border: none;
+    }
+    .login_btn>a:hover{
+      color: rgb(233, 159, 159);
+      background-color: azure;
+    }
+         /* 가입하기 버튼 */
+      .join_button_wrap{
+      margin-top: 40px;
+      text-align: center;
+  }
+  
+      .join_button{
+        width: 414px;
+        height: 40px;
+        font-size: 15pt;
+        color: azure;
+        background-color: rgb(233, 159, 159);
+        border: none;
+        cursor: pointer;
+      }
+
+    /* footer */
+    .bottom{
+      border-top: 3px solid rgb(233, 159, 159);
+      border-bottom: 3px solid rgb(233, 159, 159);
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+    .icon li{
+      display: inline-block;
+      text-align: center;
+    }
+    .info{
+      padding-top: 30px;
+    }
+    .info li{
+      display: inline-block;
+      text-align: start;
+    }
+    .copyright{
+      text-align: left;
+      padding: 10px;
+    }
+    
+    /*로그인 실패시 경고 */
+    .login_warn{
+      margin-top: 30px;
+      text-align: center;
+      color : red;
+    }
+          /* 중복아이디 존재하지 않는경우 */
+      .id_input_re_1{
+          color : green;
+          display : none;
+      }
+      /* 중복아이디 존재하는 경우 */
+      .id_input_re_2{
+          color : red;
+          display : none;
+      }
+      
+   
+      /* 비밀번호 확인 일치 유효성검사 */
+      .pwck_input_re_1{
+          color : green;
+          display : none;    
+      }
+      .pwck_input_re_2{
+          color : red;
+          display : none;    
+      }    
+    
+     /* 유효성 검사 문구 */
+   
+      .final_id_ck{
+      display: none;
+      }
+      .final_pw_ck{
+      display: none;
+      }
+      .final_pwck_ck{
+      display: none;
+      }
+      .final_mail_ck{
+      display: none;
+      }
+     

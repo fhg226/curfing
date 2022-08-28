@@ -1,0 +1,300 @@
+/* header */
+    /* 로그인, 회원가입, 마이페이지, 고객센터 */
+    .topNav>ul{
+        text-align: right;
+        padding-top: 5px;
+      }
+      .topNav li{
+        display: inline-block;
+        margin-left: 2px;
+      }
+      .topNav li>a{
+        display: inline-block;
+        padding: 5px 5px;
+       background-color: rgb(233, 159, 159);
+       border-radius: 8px;
+       color: azure;
+      }
+      .topNav li>a:hover{
+        color: azure;
+        background-color: cadetblue;
+      }
+      /* 로고 */
+      .logo{
+        text-align: center;
+        font-size: 50pt;
+        margin-bottom: 5px;
+      }
+      .logo>a{
+        color: rgb(233, 159, 159);
+      }
+      .logo img{
+        width: 100px;
+        height: 100px;
+      }
+  
+      /* section */
+      h2{
+        font-weight: bold;
+        font-size: large;
+      }
+      .join{
+        padding-top: 50px;
+        margin-bottom: 20px;
+      }
+      .join>h2{
+        color: rgb(233, 159, 159);
+        padding-bottom: 5px;
+      }
+      .join_box{
+        border-top: 1px solid rgb(233, 159, 159);
+        padding: 10px 250px 10px 300px;
+        /* text-align: center; */
+      }
+      .join_input{
+        margin-top: 30px;
+      }
+      .join_input>h4{
+        text-align: left;
+        padding-left: 15px;
+      }
+      #star{
+        color: red;
+      }
+      .memberid_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .memberid_name{
+      font-size: large;
+      font-weight: bold;
+      }
+       .memberid_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      }
+      
+       .memberpwd_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .memberpwd_name{
+      font-size: large;
+      font-weight: bold;
+      }
+       .memberpwd_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      } 
+      
+       .memberpwck_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .memberpwck_name{
+      font-size: large;
+      font-weight: bold;
+      }
+      .memberpwck_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      }
+      
+       .membername_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .membername_name{
+      font-size: large;
+      font-weight: bold;
+      }
+       .membername_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      } 
+      
+       .mail_wrap{
+      width: 100%;
+      margin-top: 20px;
+      }
+      .mail_name{
+      font-size: large;
+      font-weight: bold;
+      }
+      .mail_input{
+        width: 410px;
+        height: 40px;
+        margin: 5px;
+      } 
+      .mail_check_wrap{
+      margin-top: 20px;   
+  }
+  .mail_check_input_box{
+     border: 1px solid black;
+    height:22px;
+    padding: 10px 14px;
+    width: 60%;
+    float: left;
+  }
+  .mail_check_input{
+   width:100%;
+   height:100%;
+   border:none;
+   font-size:28px;
+  }
+  .mail_check_button{
+      border: 1px solid black;
+      height: 42px;
+      width: 130px;
+      float: right;
+      line-height: 40px;
+      text-align: center;
+      font-size: large;
+      font-weight: 900;
+      background-color: #ececf7;
+      cursor: pointer;
+  }
+  
+  
+  
+  .phone_name{
+      font-size: large;
+      font-weight: bold;
+      }
+  .phone_input_1{
+       width: 410px;
+       height: 40px;
+       margin: 5px;
+      }
+      .labels{
+        margin: 5px;
+        text-align: left;
+        padding-left: 15px;
+      }
+      
+      .memberJurirno_wrap{
+        width: 100%;
+        margin-top: 20px;
+        }
+        .memberJurirno_number{
+        font-size: large;
+        font-weight: bold;
+        }
+        .memberJurirno_input{
+          width: 410px;
+          height: 40px;
+          margin: 5px;
+        }
+
+        .license_wrap{
+            width: 100%;
+            margin-top: 20px;
+            }
+            .license_name{
+            font-size: large;
+            font-weight: bold;
+            }
+            .license_input{
+              width: 410px;
+              height: 40px;
+              margin: 5px;
+            }
+      
+      
+      /* 가입하기 버튼 */
+      .join_button_wrap{
+      margin-top: 40px;
+      text-align: center;
+  }
+  
+      .join_button{
+        width: 414px;
+        height: 40px;
+        font-size: 15pt;
+        color: azure;
+        background-color: rgb(233, 159, 159);
+        border: none;
+        cursor: pointer;
+      }
+  
+      .radio{
+        width: 50px;
+        text-align: left;
+      }
+  
+      /* footer */
+      .bottom{
+        border-top: 1px solid rgb(233, 159, 159);
+        border-bottom: 1px solid rgb(233, 159, 159);
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+      }
+      .icon li{
+        display: inline-block;
+        text-align: center;
+      }
+      .info{
+        padding-top: 30px;
+      }
+      .info li{
+        display: inline-block;
+        text-align: start;
+      }
+      .copyright{
+        text-align: left;
+        padding: 10px;
+      }
+          /* 중복아이디 존재하지 않는경우 */
+      .memberid_input_re_1{
+          color : green;
+          display : none;
+      }
+      /* 중복아이디 존재하는 경우 */
+      .memberid_input_re_2{
+          color : red;
+          display : none;
+      }
+      
+   
+      /* 비밀번호 확인 일치 유효성검사 */
+      .memberpwck_input_re_1{
+          color : green;
+          display : none;    
+      }
+      .memberpwck_input_re_2{
+          color : red;
+          display : none;    
+      }    
+  
+      
+      #mail_check_input_box_false{
+      background-color:#ebebe4;
+  }
+   
+      #mail_check_input_box_true{
+      background-color:white;
+  }
+      
+      /* 유효성 검사 문구 */
+   
+      .final_memberid_ck{
+      display: none;
+      }
+      .final_memberpwd_ck{
+      display: none;
+      }
+      .final_memberpwck_ck{
+      display: none;
+      }
+      .final_membername_ck{
+      display: none;
+      }
+      .final_mail_ck{
+      display: none;
+      }
+     
